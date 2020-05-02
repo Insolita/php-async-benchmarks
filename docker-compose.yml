@@ -1,0 +1,41 @@
+version: '2.4'
+services:
+  data:
+    image: busybox:latest
+    volumes:
+      - ./src:/app
+    entrypoint: 'tail -f /dev/null'
+  php-cli:
+    build:
+      context: _docker/cli
+      args:
+        - USERNAME=appuser
+        - GROUP=appuser
+        - GID=1000
+        - UID=1000
+        - ALLOW_SUDO=1
+    restart: on-failure
+    links:
+      - db
+    volumes_from:
+      - data
+    environment:
+      - TZ=Europe/Moscow
+    tty: true
+  db:
+    image: "postgres:12"
+    restart: on-failure
+    expose:
+      - 5432
+    ports:
+      - "15488:5432"
+    environment:
+      - TZ=Europe/Moscow
+      - PGTZ=Europe/Moscow
+      - POSTGRES_DB=pgtest
+      - POSTGRES_USER=pgdev
+      - POSTGRES_PASSWORD=pgdev
+    volumes:
+      - type: bind
+        source: ./_docker/db/testdb
+        target: /var/lib/postgresql/data
