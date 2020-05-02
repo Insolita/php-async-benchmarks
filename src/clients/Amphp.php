@@ -8,8 +8,11 @@ use Amp\Http\Client\HttpClientBuilder;
 use Amp\Http\Client\Interceptor\SetRequestTimeout;
 use Amp\Http\Client\Request;
 use Amp\LazyPromise;
+use Amp\Loop;
+use Amp\Promise;
 use Amp\TimeoutCancellationToken;
 use Symfony\Component\DomCrawler\Crawler;
+use function Amp\call;
 use function Amp\File\filesystem;
 use function Amp\Promise\all;
 use function Amp\Promise\any;
@@ -26,7 +29,7 @@ class Amphp
 
     private \Amp\Http\Client\HttpClient $client;
     private \Amp\File\Driver $fs;
-    private array $urls;
+    private \SplQueue $queue;
 
     public function __construct(int $concurrency, int $batchSize, string $urlPath, string $tempDir)
     {
@@ -39,15 +42,16 @@ class Amphp
                                                  ->followRedirects(0)
                                                  ->build();
 
-        $this->fs = filesystem();
+        $this->fs    = filesystem();
+        $this->queue = new \SplQueue();
     }
 
     public function run()
     {
-        $promise = \Amp\call(fn() => $this->initUrls());
-        wait($promise);
-        $promise = \Amp\call(fn() => $this->processRequestsConcurrent());
-        wait($promise);
+        Loop::run(function () {
+            yield $this->initUrls();
+            yield $this->processRequests();
+        });
     }
 
     private function initUrls()
@@ -57,49 +61,48 @@ class Amphp
 //            $this->urls[] = $url;
 //        }
         $data = yield $this->fs->get($this->urlPath);
-        $this->urls = \array_slice(\explode(PHP_EOL, $data), 0, $this->batchSize);
-        $this->urls = \array_chunk($this->urls, $this->concurrency);
+        $urls = \array_slice(\explode(PHP_EOL, $data), 0, $this->batchSize);
+        foreach ($urls as $url) {
+            $this->queue->enqueue($url);
+        }
         unset($data);
     }
 
     private function processRequests()
     {
-        foreach ($this->urls as $chunk){
-            foreach ($chunk as $url){
-                try{
-                    $response = yield $this->client->request(new Request($url));
-                    $body = yield $response->getBody()->buffer();
-                    yield \Amp\call(fn() => $this->processHtml($body, $url));
-                }catch (\Throwable $e){
-                    $this->fs->open($this->tempDir . '/bad.txt', 'a')
-                             ->onResolve(function($err, File $file) use($url) {
-                                 $file->end("$url" . PHP_EOL);
-                             });
-                }
+        $maxPoolSize = 10;
+        /** @var Promise[] $pool */
+        $pool = [];
+        while (!$this->queue->isEmpty()) {
+            if (count($pool) < $maxPoolSize) {
+                // fill pool with work
+                $promise = $this->processRequest($this->queue->pop());
+
+                $promise->onResolve(function () use (&$pool) {
+                    unset($pool[array_search($this, $pool, true)]);
+                });
+                $pool[] = $promise;
+                continue;
             }
+            // wait when some task will be accomplished
+            [$errors, $values] = yield Promise\some($pool);
         }
     }
-    private function processRequestsConcurrent()
+
+    private function processRequest($url)
     {
-        foreach ($this->urls as $chunk){
-            $promises = [];
-            foreach ($chunk as $url){
-                $promises[$url] = \Amp\call(function () use ($url) {
-                    try{
-                        $response = yield $this->client->request(new Request($url));
-                        $body = yield $response->getBody()->buffer();
-                        return \Amp\call(fn() => $this->processHtml($body, $url));
-                    }catch (\Throwable $e){
-                       $this->fs->open($this->tempDir . '/bad.txt', 'a')
-                                 ->onResolve(function($err, File $file) use($url) {
-                                      $file->end("$url" . PHP_EOL);
-                                 });
-                    }
-                });
+        return call(function () use ($url) {
+            try {
+                $response = yield $this->client->request(new Request($url));
+                $body     = yield $response->getBody()->buffer();
+                yield call(fn() => $this->processHtml($body, $url));
+            } catch (\Throwable $e) {
+                $this->fs->open($this->tempDir . '/bad.txt', 'a')
+                    ->onResolve(function ($err, File $file) use ($url) {
+                        $file->end("$url" . PHP_EOL);
+                    });
             }
-            //wait(some($promises));
-            wait(any($promises));
-        }
+        });
     }
 
     private function processHtml(string $html, string $url)
