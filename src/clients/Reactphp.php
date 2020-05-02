@@ -59,15 +59,12 @@ class Reactphp
                 $promise = $queue($url)
                     ->then(function(ResponseInterface $response) use ($url) {
                        // echo 'process url ' . $url . PHP_EOL;
-                        $this->loop->futureTick(fn()=>$this->processHtml((string)$response->getBody(), $url));
+                        $this->processHtml((string)$response->getBody(), $url);
                     },
                         function() use ($url) {
                             $this->loop->futureTick(function() use ($url){
-                                $this->fs->file($this->tempDir . '/bad.txt')
-                                         ->open('a')->then(function(WritableStreamInterface $stream) use ($url) {
-                                        $stream->write($url . PHP_EOL);
-                                        $stream->end();
-                                    });
+                                $this->fs->file($this->tempDir . '/bad.txt')->open('a+')
+                                         ->then(fn(WritableStreamInterface $stream) =>  $stream->end($url. PHP_EOL));
                             });
                         });
             }
@@ -78,10 +75,8 @@ class Reactphp
     {
         $crawler = new Crawler($html);
         $title = $crawler->filterXPath('//title')->text("No title");
-        $this->fs->file($this->tempDir . '/ok.txt')->open('a')
-                 ->then(function(WritableStreamInterface $stream) use (&$url, &$title) {
-                     $stream->write("$url,$title" . PHP_EOL);
-                     $stream->end();
-                 });
+        $this->fs->file($this->tempDir . '/ok.txt')->open('a+')
+            ->then(fn(WritableStreamInterface $stream) => $stream->end("$url,$title" . PHP_EOL));
+
     }
 }

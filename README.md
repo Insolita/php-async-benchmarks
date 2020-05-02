@@ -3,6 +3,7 @@ PHP Async Clients benchmark (Amphp, ReactPHP, Guzzle)
 
 ### Http request with saving data to file
 
+Docker:
 Concurrency = 25, iterations=10
 
 |Num queries |  Client      | Min Time   | Max Time   | Avg Time  |
@@ -29,3 +30,17 @@ Concurrency = 25, iterations=10
 |           | reactphp| 208.5986 | 228.2414 | 217.3939 |
 
 
+Production server
+
+|Num queries |  Client      | Min Time   | Max Time   | Avg Time  |
+|------------|--------------|------------|------------|-----------|
+| 25 queries|               |             |           |           |
+|           |guzzle(multicurl)|1.5025  |  1.9986  |1.7009 |
+|           | amphp   | 1.4691    | 2.4819   | 1.7389 |
+|           | reactphp|  7.0732   | 7.6412   | 7.1580   |
+| 4000 queries|               |             |           |           |
+|           |guzzle(multicurl)| 135.9078  |  143.1398  | 139.3505  |
+|           | reactphp| 95.6756  | 111.0209 | 98.6829  |
+| 6000 queries|               |             |           |           |
+|           |guzzle(multicurl)| 177.1444  |  172.1199  | 174.07613  |
+|           | reactphp| 139.5903  |  159.0747 | 146.9556  |

@@ -5,6 +5,7 @@ namespace app\clients;
 
 use Amp\File\File;
 use Amp\Http\Client\HttpClientBuilder;
+use Amp\Http\Client\Interceptor\SetRequestTimeout;
 use Amp\Http\Client\Request;
 use Amp\LazyPromise;
 use Amp\TimeoutCancellationToken;
@@ -33,7 +34,11 @@ class Amphp
         $this->batchSize = $batchSize;
         $this->urlPath = $urlPath;
         $this->tempDir = $tempDir;
-        $this->client = HttpClientBuilder::buildDefault();
+        //$this->client = HttpClientBuilder::buildDefault();
+        $this->client = (new HttpClientBuilder())->intercept(new SetRequestTimeout(5000, 10000, 30000))
+                                                 ->followRedirects(0)
+                                                 ->build();
+
         $this->fs = filesystem();
     }
 
@@ -92,7 +97,8 @@ class Amphp
                     }
                 });
             }
-            wait(some($promises));
+            //wait(some($promises));
+            wait(any($promises));
         }
     }
 
