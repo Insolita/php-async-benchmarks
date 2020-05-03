@@ -41,7 +41,7 @@ class Amphp
         $this->tempDir = $tempDir;
         //$this->client = HttpClientBuilder::buildDefault();
         $this->client = (new HttpClientBuilder())->intercept(new SetRequestTimeout(5000, 10000, 30000))
-                                                 ->followRedirects(0)
+                                                 ->followRedirects(0)->retry(0)
                                                  ->build();
 
         $this->fs    = filesystem();
@@ -58,10 +58,6 @@ class Amphp
 
     private function initUrls()
     {
-
-//        foreach ($this->urlGenerator() as $url){
-//            $this->urls[] = $url;
-//        }
         $data = yield $this->fs->get($this->urlPath);
         $urls = \array_slice(\explode(PHP_EOL, $data), 0, $this->batchSize);
         foreach ($urls as $url) {
@@ -116,19 +112,5 @@ class Amphp
         $file = yield $this->fs->open($this->tempDir . '/ok.txt', 'a');
         assert($file instanceof File);
         yield $file->end("$url,$title" . PHP_EOL);
-    }
-
-    private function urlGenerator()
-    {
-        $f = fopen($this->urlPath, 'r');
-        try {
-            $num = 0;
-            while (($line = fgets($f)) && $num < $this->batchSize) {
-                $num++;
-                yield \trim($line);
-            }
-        } finally {
-            fclose($f);
-        }
     }
 }

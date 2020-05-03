@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bcb2a641b1f83b635e2d3605a6367f8a",
+    "content-hash": "2e7f665a974198fced9f5b2353c14713",
     "packages": [
         {
             "name": "amphp/amp",
@@ -485,16 +485,16 @@
         },
         {
             "name": "amphp/http-client",
-            "version": "v4.2.2",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/http-client.git",
-                "reference": "3a07c0dbb84e790ac5351019cb625f976c563faa"
+                "reference": "3a1857b00531da18382b2f4165eb0e3d0eb90171"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/http-client/zipball/3a07c0dbb84e790ac5351019cb625f976c563faa",
-                "reference": "3a07c0dbb84e790ac5351019cb625f976c563faa",
+                "url": "https://api.github.com/repos/amphp/http-client/zipball/3a1857b00531da18382b2f4165eb0e3d0eb90171",
+                "reference": "3a1857b00531da18382b2f4165eb0e3d0eb90171",
                 "shasum": ""
             },
             "require": {
@@ -516,9 +516,12 @@
                 "amphp/http-server": "^2-rc4",
                 "amphp/php-cs-fixer-config": "dev-master",
                 "amphp/phpunit-util": "^1.1",
+                "amphp/react-adapter": "^2.1",
+                "clue/socks-react": "^1.0",
                 "ext-json": "*",
                 "kelunik/link-header-rfc5988": "^1.0",
-                "phpunit/phpunit": "^7 || ^8"
+                "phpunit/phpunit": "^7 || ^8",
+                "vimeo/psalm": "^3.9@dev"
             },
             "suggest": {
                 "amphp/file": "Required for file request bodies and HTTP archive logging",
@@ -564,11 +567,7 @@
                 "non-blocking",
                 "rest"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/http-client/issues",
-                "source": "https://github.com/amphp/http-client/tree/v4.2.2"
-            },
-            "time": "2020-03-17T19:16:45+00:00"
+            "time": "2020-05-03T13:04:46+00:00"
         },
         {
             "name": "amphp/parallel",
@@ -4163,5 +4162,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
