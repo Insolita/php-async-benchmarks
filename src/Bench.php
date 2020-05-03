@@ -96,16 +96,11 @@ class Bench
 
     private function printResult()
     {
-        $result = [
-            'client'=>$this->clientName,
-            'concurrency'=>$this->concurrency,
-            'batchSize'=>$this->batchSize,
-            'iterations'=>$this->iterations,
-            'max'=>max($this->deltas),
-            'min'=>min($this->deltas),
-            'avg'=>round(array_sum($this->deltas)/$this->iterations, 6)
-        ];
-
-        echo print_r($result, true).PHP_EOL;
+        $min = round(min($this->deltas), 4);
+        $max = round(max($this->deltas), 4);
+        $avg = round(array_sum($this->deltas)/$this->iterations, 4);
+        echo "Batch size: {$this->batchSize}, Iterations: {$this->iterations}".PHP_EOL;
+        echo \str_repeat('-', 25).PHP_EOL;
+        echo "| {$this->clientName}| {$min} | {$max} | $avg |".PHP_EOL;
     }
 }
