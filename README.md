@@ -41,7 +41,7 @@ Production server
 |           | amphp   |  1.6166 | 2.2392 | 1.8866 |
 |           | reactphp|  6.9168 | 7.0695 | 7.0179 |
 | 4000 queries|               |             |           |           |
-|           |guzzle(multicurl)|    |     |    |
+|           |guzzle(multicurl)|89.539    |  105.6129   | 92.9081   |
 |           | amphp|  65.9951 | 75.299 | 70.2124 |
 |           | reactphp| 81.8953 | 87.0721 | 83.5715 |
 | 6000 queries|               |             |           |           |
