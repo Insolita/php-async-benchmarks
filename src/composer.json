@@ -16,7 +16,7 @@
         "voryx/pgasync":            "^2.0" ,
         "amphp/file":               "^1.0" ,
         "amphp/parallel-functions": "^0.1" ,
-        "amphp/http-client":        "^4.2" ,
+        "amphp/http-client":        "^4.3" ,
         "amphp/postgres":           "^1.2",
         "clue/buzz-react":          "^2.7",
         "symfony/dom-crawler":      "^5.0",

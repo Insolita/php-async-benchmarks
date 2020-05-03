@@ -2,31 +2,35 @@
 
 namespace app\clients;
 
-
-use Amp\File\File;
+use Amp\ByteStream\LineReader;
+use Amp\File;
+use Amp\Http\Client\HttpClient;
 use Amp\Http\Client\HttpClientBuilder;
 use Amp\Http\Client\Interceptor\SetRequestTimeout;
 use Amp\Http\Client\Request;
-use Amp\LazyPromise;
-use Amp\TimeoutCancellationToken;
+use Amp\Http\Client\Response;
+use Amp\Iterator;
+use Amp\Producer;
+use Amp\Promise;
+use Amp\Sync\LocalSemaphore;
+use Amp\Sync\Lock;
 use Symfony\Component\DomCrawler\Crawler;
-use function Amp\File\filesystem;
-use function Amp\Promise\all;
-use function Amp\Promise\any;
-use function Amp\Promise\some;
+use function Amp\asyncCall;
+use function Amp\call;
 use function Amp\Promise\wait;
-use const PHP_EOL;
 
 class Amphp
 {
     private int $concurrency;
     private int $batchSize;
+
     private string $urlPath;
     private string $tempDir;
 
-    private \Amp\Http\Client\HttpClient $client;
-    private \Amp\File\Driver $fs;
-    private array $urls;
+    private HttpClient $client;
+
+    private File\File $goodFile;
+    private File\File $badFile;
 
     public function __construct(int $concurrency, int $batchSize, string $urlPath, string $tempDir)
     {
@@ -34,94 +38,87 @@ class Amphp
         $this->batchSize = $batchSize;
         $this->urlPath = $urlPath;
         $this->tempDir = $tempDir;
-        //$this->client = HttpClientBuilder::buildDefault();
-        $this->client = (new HttpClientBuilder())->intercept(new SetRequestTimeout(5000, 10000, 30000))
-                                                 ->followRedirects(0)
-                                                 ->build();
 
-        $this->fs = filesystem();
+        $this->client = (new HttpClientBuilder())
+            ->intercept(new SetRequestTimeout(5000, 10000, 30000))
+            ->followRedirects(0)
+            ->retry(0)
+            ->build();
     }
 
-    public function run()
+    public function run(): void
     {
-        $promise = \Amp\call(fn() => $this->initUrls());
-        wait($promise);
-        $promise = \Amp\call(fn() => $this->processRequestsConcurrent());
-        wait($promise);
+        wait($this->processRequests($this->readUrls()));
     }
 
-    private function initUrls()
+    private function readUrls(): Iterator
     {
+        return new Producer(function (callable $emit) {
+            /** @var File\File $fileHandle */
+            $fileHandle = yield File\open($this->urlPath, 'r');
+            $lineReader = new LineReader($fileHandle);
 
-//        foreach ($this->urlGenerator() as $url){
-//            $this->urls[] = $url;
-//        }
-        $data = yield $this->fs->get($this->urlPath);
-        $this->urls = \array_slice(\explode(PHP_EOL, $data), 0, $this->batchSize);
-        $this->urls = \array_chunk($this->urls, $this->concurrency);
-        unset($data);
-    }
+            try {
+                $num = 0;
+                while (($line = yield $lineReader->readLine()) && $num < $this->batchSize) {
+                    $num++;
 
-    private function processRequests()
-    {
-        foreach ($this->urls as $chunk){
-            foreach ($chunk as $url){
-                try{
-                    $response = yield $this->client->request(new Request($url));
-                    $body = yield $response->getBody()->buffer();
-                    yield \Amp\call(fn() => $this->processHtml($body, $url));
-                }catch (\Throwable $e){
-                    $this->fs->open($this->tempDir . '/bad.txt', 'a')
-                             ->onResolve(function($err, File $file) use($url) {
-                                 $file->end("$url" . PHP_EOL);
-                             });
+                    yield $emit(\trim($line));
                 }
+            } finally {
+                yield $fileHandle->close();
             }
-        }
-    }
-    private function processRequestsConcurrent()
-    {
-        foreach ($this->urls as $chunk){
-            $promises = [];
-            foreach ($chunk as $url){
-                $promises[$url] = \Amp\call(function () use ($url) {
-                    try{
-                        $response = yield $this->client->request(new Request($url));
-                        $body = yield $response->getBody()->buffer();
-                        return \Amp\call(fn() => $this->processHtml($body, $url));
-                    }catch (\Throwable $e){
-                       $this->fs->open($this->tempDir . '/bad.txt', 'a')
-                                 ->onResolve(function($err, File $file) use($url) {
-                                      $file->end("$url" . PHP_EOL);
-                                 });
-                    }
-                });
-            }
-            //wait(some($promises));
-            wait(any($promises));
-        }
-    }
-
-    private function processHtml(string $html, string $url)
-    {
-        $crawler = new Crawler($html);
-        $title = $crawler->filterXPath('//title')->text("No title");
-        $this->fs->open($this->tempDir . '/ok.txt', 'a')->onResolve(function($err, File $file) use($url, $title) {
-            $file->end("$url,$title" . PHP_EOL);
         });
     }
 
-    private function urlGenerator()
+    private function processRequests(Iterator $urls): Promise
     {
-        $f = fopen($this->urlPath, 'r');
-        try {
-            $num = 0;
-            while (($line = fgets($f)) && $num < $this->batchSize) {
-                $num++;
-                yield \trim($line);
+        return call(function () use ($urls) {
+            $this->goodFile = yield File\open($this->tempDir . '/ok.txt', 'a');
+            $this->badFile = yield File\open($this->tempDir . '/bad.txt', 'a');
+
+            try {
+                $semaphore = new LocalSemaphore($this->concurrency);
+
+                while (yield $urls->advance()) {
+                    $url = $urls->getCurrent();
+
+                    /** @var Lock $lock */
+                    $lock = yield $semaphore->acquire();
+
+                    asyncCall(function () use ($url, $lock) {
+                        try {
+                            /** @var Response $response */
+                            $response = yield $this->client->request(new Request($url));
+                            yield $this->processHtml(yield $response->getBody()->buffer(), $url);
+                        } catch (\Throwable $e) {
+                            yield $this->badFile->write($url . \PHP_EOL);
+                        } finally {
+                            $lock->release();
+                        }
+                    });
+                }
+            } finally {
+                $locks = [];
+
+                // Acquire all locks to ensure all requests finished
+                for ($i = 0; $i < $this->concurrency; $i++) {
+                    $locks[] = yield $semaphore->acquire();
+                }
+
+                yield $this->goodFile->close();
+                yield $this->badFile->close();
             }
-        } finally {
-            fclose($f);
-        }
+        });
+    }
+
+    private function processHtml(string $html, string $url): Promise
+    {
+        return call(function () use ($html, $url) {
+            $crawler = new Crawler($html);
+            $title = $crawler->filterXPath('//title')->text("No title");
+
+            yield $this->goodFile->write("$url,$title" . \PHP_EOL);
+        });
     }
 }
