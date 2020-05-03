@@ -57,9 +57,7 @@ class Bench
     {
         switch ($this->clientName){
             case 'amp':
-                Loop::run(
-                    fn() => (new Amphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir))->run()
-                );
+                (new Amphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir))->run();
                 break;
             case 'react':
                 $loop = \React\EventLoop\Factory::create();
