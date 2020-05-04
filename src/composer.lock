@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e7f665a974198fced9f5b2353c14713",
+    "content-hash": "f71f91da319a24236020fa34d55e1335",
     "packages": [
         {
             "name": "amphp/amp",
@@ -82,11 +82,6 @@
                 "non-blocking",
                 "promise"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.org/amphp",
-                "issues": "https://github.com/amphp/amp/issues",
-                "source": "https://github.com/amphp/amp/tree/v2.4.4"
-            },
             "time": "2020-04-30T04:54:50+00:00"
         },
         {
@@ -152,11 +147,6 @@
                 "non-blocking",
                 "stream"
             ],
-            "support": {
-                "irc": "irc://irc.freenode.org/amphp",
-                "issues": "https://github.com/amphp/byte-stream/issues",
-                "source": "https://github.com/amphp/byte-stream/tree/v1.7.3"
-            },
             "time": "2020-04-04T16:56:54+00:00"
         },
         {
@@ -209,11 +199,6 @@
             ],
             "description": "A promise-aware caching API for Amp.",
             "homepage": "https://github.com/amphp/cache",
-            "support": {
-                "irc": "irc://irc.freenode.org/amphp",
-                "issues": "https://github.com/amphp/cache/issues",
-                "source": "https://github.com/amphp/cache/tree/v1.3.0"
-            },
             "time": "2019-11-29T18:47:04+00:00"
         },
         {
@@ -291,10 +276,6 @@
                 "dns",
                 "resolve"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/dns/issues",
-                "source": "https://github.com/amphp/dns/tree/master"
-            },
             "time": "2019-11-28T20:10:22+00:00"
         },
         {
@@ -362,10 +343,6 @@
                 "non-blocking",
                 "static"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/file/issues",
-                "source": "https://github.com/amphp/file/tree/master"
-            },
             "time": "2019-09-14T03:09:41+00:00"
         },
         {
@@ -424,10 +401,6 @@
                 "hpack",
                 "http-2"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/hpack/issues",
-                "source": "https://github.com/amphp/hpack/tree/v3.1.0"
-            },
             "time": "2020-01-11T19:33:14+00:00"
         },
         {
@@ -477,10 +450,6 @@
                 }
             ],
             "description": "Basic HTTP primitives which can be shared by servers and clients.",
-            "support": {
-                "issues": "https://github.com/amphp/http/issues",
-                "source": "https://github.com/amphp/http/tree/master"
-            },
             "time": "2020-01-14T17:41:56+00:00"
         },
         {
@@ -631,10 +600,6 @@
                 "multi-processing",
                 "multi-threading"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/parallel/issues",
-                "source": "https://github.com/amphp/parallel/tree/master"
-            },
             "time": "2020-04-27T15:12:37+00:00"
         },
         {
@@ -682,10 +647,6 @@
                 }
             ],
             "description": "Parallel processing made simple.",
-            "support": {
-                "issues": "https://github.com/amphp/parallel-functions/issues",
-                "source": "https://github.com/amphp/parallel-functions/tree/master"
-            },
             "time": "2018-10-28T15:29:02+00:00"
         },
         {
@@ -737,10 +698,6 @@
                 "parser",
                 "stream"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/parser/issues",
-                "source": "https://github.com/amphp/parser/tree/is-valid"
-            },
             "time": "2017-06-06T05:29:10+00:00"
         },
         {
@@ -801,10 +758,6 @@
                 "postgre",
                 "postgresql"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/postgres/issues",
-                "source": "https://github.com/amphp/postgres/tree/master"
-            },
             "time": "2020-02-13T23:13:28+00:00"
         },
         {
@@ -860,10 +813,6 @@
             ],
             "description": "Asynchronous process manager.",
             "homepage": "https://github.com/amphp/process",
-            "support": {
-                "issues": "https://github.com/amphp/process/issues",
-                "source": "https://github.com/amphp/process/tree/master"
-            },
             "time": "2019-02-26T16:33:03+00:00"
         },
         {
@@ -918,10 +867,6 @@
                 "serialization",
                 "serialize"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/serialization/issues",
-                "source": "https://github.com/amphp/serialization/tree/master"
-            },
             "time": "2020-03-25T21:39:07+00:00"
         },
         {
@@ -996,10 +941,6 @@
                 "tcp",
                 "tls"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/socket/issues",
-                "source": "https://github.com/amphp/socket/tree/master"
-            },
             "time": "2020-02-27T21:29:37+00:00"
         },
         {
@@ -1044,10 +985,6 @@
                 "db",
                 "sql"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/sql/issues",
-                "source": "https://github.com/amphp/sql/tree/v1.0.1"
-            },
             "time": "2019-09-26T16:23:02+00:00"
         },
         {
@@ -1093,10 +1030,6 @@
                 "db",
                 "sql"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/sql-common/issues",
-                "source": "https://github.com/amphp/sql-common/tree/master"
-            },
             "time": "2020-03-04T18:01:46+00:00"
         },
         {
@@ -1154,10 +1087,6 @@
                 "semaphore",
                 "synchronization"
             ],
-            "support": {
-                "issues": "https://github.com/amphp/sync/issues",
-                "source": "https://github.com/amphp/sync/tree/v1.3.0"
-            },
             "time": "2019-11-08T18:42:56+00:00"
         },
         {
@@ -1199,10 +1128,6 @@
                 }
             ],
             "description": "Windows Registry Reader.",
-            "support": {
-                "issues": "https://github.com/amphp/windows-registry/issues",
-                "source": "https://github.com/amphp/windows-registry/tree/master"
-            },
             "time": "2018-10-24T03:34:54+00:00"
         },
         {
@@ -1253,12 +1178,6 @@
                 "core",
                 "framework"
             ],
-            "support": {
-                "forum": "https://stackoverflow.com/tags/cakephp",
-                "irc": "irc://irc.freenode.org/cakephp",
-                "issues": "https://github.com/cakephp/cakephp/issues",
-                "source": "https://github.com/cakephp/core"
-            },
             "time": "2020-01-10T15:24:40+00:00"
         },
         {
@@ -1312,12 +1231,6 @@
                 "string",
                 "utility"
             ],
-            "support": {
-                "forum": "https://stackoverflow.com/tags/cakephp",
-                "irc": "irc://irc.freenode.org/cakephp",
-                "issues": "https://github.com/cakephp/cakephp/issues",
-                "source": "https://github.com/cakephp/utility"
-            },
             "time": "2020-02-18T01:57:35+00:00"
         },
         {
@@ -1378,10 +1291,6 @@
                 "psr-7",
                 "reactphp"
             ],
-            "support": {
-                "issues": "https://github.com/clue/reactphp-buzz/issues",
-                "source": "https://github.com/clue/reactphp-buzz/tree/v2.7.0"
-            },
             "time": "2020-02-26T12:05:32+00:00"
         },
         {
@@ -1439,10 +1348,6 @@
                 "throttle",
                 "worker"
             ],
-            "support": {
-                "issues": "https://github.com/clue/reactphp-mq/issues",
-                "source": "https://github.com/clue/reactphp-mq/tree/v1.2.0"
-            },
             "time": "2019-12-05T08:45:06+00:00"
         },
         {
@@ -1483,10 +1388,6 @@
             "keywords": [
                 "dns"
             ],
-            "support": {
-                "issues": "https://github.com/DaveRandom/LibDNS/issues",
-                "source": "https://github.com/DaveRandom/LibDNS/tree/v2.0.2"
-            },
             "time": "2019-12-03T09:12:46+00:00"
         },
         {
@@ -1554,10 +1455,6 @@
                 "singularize",
                 "string"
             ],
-            "support": {
-                "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/1.3.1"
-            },
             "time": "2019-10-30T19:59:35+00:00"
         },
         {
@@ -1614,10 +1511,6 @@
                 "constructor",
                 "instantiate"
             ],
-            "support": {
-                "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/master"
-            },
             "time": "2019-10-21T16:45:58+00:00"
         },
         {
@@ -1661,10 +1554,6 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "support": {
-                "issues": "https://github.com/igorw/evenement/issues",
-                "source": "https://github.com/igorw/evenement/tree/master"
-            },
             "time": "2017-07-23T21:35:13+00:00"
         },
         {
@@ -1732,10 +1621,6 @@
                 "rest",
                 "web service"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/6.5"
-            },
             "time": "2020-04-18T10:38:46+00:00"
         },
         {
@@ -1787,10 +1672,6 @@
             "keywords": [
                 "promise"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/master"
-            },
             "time": "2016-12-20T10:07:11+00:00"
         },
         {
@@ -1862,10 +1743,6 @@
                 "uri",
                 "url"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/1.6.1"
-            },
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
@@ -1917,10 +1794,6 @@
                 "hash_equals",
                 "hash_pbkdf2"
             ],
-            "support": {
-                "issues": "https://github.com/indigophp/hash-compat/issues",
-                "source": "https://github.com/indigophp/hash-compat/tree/master"
-            },
             "time": "2015-08-22T07:03:35+00:00"
         },
         {
@@ -1970,10 +1843,6 @@
                 "pem",
                 "x509"
             ],
-            "support": {
-                "issues": "https://github.com/kelunik/certificate/issues",
-                "source": "https://github.com/kelunik/certificate/tree/v1.1.2"
-            },
             "time": "2019-05-29T19:02:31+00:00"
         },
         {
@@ -2056,18 +1925,6 @@
                 "url",
                 "ws"
             ],
-            "support": {
-                "docs": "https://uri.thephpleague.com",
-                "forum": "https://thephpleague.slack.com",
-                "issues": "https://github.com/thephpleague/uri/issues",
-                "source": "https://github.com/thephpleague/uri/tree/6.2.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/nyamsprod",
-                    "type": "github"
-                }
-            ],
             "time": "2020-03-17T14:40:17+00:00"
         },
         {
@@ -2125,10 +1982,6 @@
                 "uri",
                 "url"
             ],
-            "support": {
-                "issues": "https://github.com/thephpleague/uri-interfaces/issues",
-                "source": "https://github.com/thephpleague/uri-interfaces/tree/master"
-            },
             "time": "2020-02-08T12:10:37+00:00"
         },
         {
@@ -2194,10 +2047,6 @@
                 "uri",
                 "url"
             ],
-            "support": {
-                "issues": "https://github.com/thephpleague/uri-parser/issues",
-                "source": "https://github.com/thephpleague/uri-parser/tree/master"
-            },
             "time": "2018-11-22T07:55:51+00:00"
         },
         {
@@ -2259,10 +2108,6 @@
                 "serialization",
                 "serialize"
             ],
-            "support": {
-                "issues": "https://github.com/opis/closure/issues",
-                "source": "https://github.com/opis/closure/tree/3.5.1"
-            },
             "time": "2019-11-29T22:36:02+00:00"
         },
         {
@@ -2308,11 +2153,6 @@
                 "pseudorandom",
                 "random"
             ],
-            "support": {
-                "email": "info@paragonie.com",
-                "issues": "https://github.com/paragonie/random_compat/issues",
-                "source": "https://github.com/paragonie/random_compat"
-            },
             "time": "2018-07-02T15:55:56+00:00"
         },
         {
@@ -2363,9 +2203,6 @@
                 "request",
                 "response"
             ],
-            "support": {
-                "source": "https://github.com/php-fig/http-message/tree/master"
-            },
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
@@ -2406,10 +2243,6 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "support": {
-                "issues": "https://github.com/ralouphie/getallheaders/issues",
-                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
-            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -2450,24 +2283,20 @@
                 "promise",
                 "reactphp"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/cache/issues",
-                "source": "https://github.com/reactphp/cache/tree/v1.0.0"
-            },
             "time": "2019-07-11T13:45:28+00:00"
         },
         {
             "name": "react/child-process",
-            "version": "v0.6.1",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "6895afa583d51dc10a4b9e93cd3bce17b3b77ac3"
+                "reference": "aae49d7f1340bafb695b9af3ce4421ea41a39620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/6895afa583d51dc10a4b9e93cd3bce17b3b77ac3",
-                "reference": "6895afa583d51dc10a4b9e93cd3bce17b3b77ac3",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/aae49d7f1340bafb695b9af3ce4421ea41a39620",
+                "reference": "aae49d7f1340bafb695b9af3ce4421ea41a39620",
                 "shasum": ""
             },
             "require": {
@@ -2477,8 +2306,7 @@
                 "react/stream": "^1.0 || ^0.7.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35",
-                "react/socket": "^1.0",
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35",
                 "sebastian/environment": "^3.0 || ^2.0 || ^1.0"
             },
             "type": "library",
@@ -2497,32 +2325,29 @@
                 "process",
                 "reactphp"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/child-process/issues",
-                "source": "https://github.com/reactphp/child-process/tree/v0.6.1"
-            },
-            "time": "2019-02-15T13:48:16+00:00"
+            "time": "2018-01-18T14:53:06+00:00"
         },
         {
             "name": "react/dns",
-            "version": "v1.2.0",
+            "version": "v0.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "a214d90c2884dac18d0cac6176202f247b66d762"
+                "reference": "6852fb98e22d2e5bb35fe5aeeaa96551b120e7c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/a214d90c2884dac18d0cac6176202f247b66d762",
-                "reference": "a214d90c2884dac18d0cac6176202f247b66d762",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/6852fb98e22d2e5bb35fe5aeeaa96551b120e7c9",
+                "reference": "6852fb98e22d2e5bb35fe5aeeaa96551b120e7c9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/cache": "^1.0 || ^0.6 || ^0.5",
-                "react/event-loop": "^1.0 || ^0.5",
-                "react/promise": "^2.7 || ^1.2.1",
-                "react/promise-timer": "^1.2"
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
+                "react/promise": "^2.1 || ^1.2.1",
+                "react/promise-timer": "^1.2",
+                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.5"
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
@@ -2545,11 +2370,7 @@
                 "dns-resolver",
                 "reactphp"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/dns/issues",
-                "source": "https://github.com/reactphp/dns/tree/v1.2.0"
-            },
-            "time": "2019-08-15T09:06:31+00:00"
+            "time": "2019-07-10T21:00:53+00:00"
         },
         {
             "name": "react/event-loop",
@@ -2591,10 +2412,6 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/event-loop/issues",
-                "source": "https://github.com/reactphp/event-loop/tree/v1.1.1"
-            },
             "time": "2020-01-01T18:39:52+00:00"
         },
         {
@@ -2652,10 +2469,6 @@
                 "eio",
                 "filesystem"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/filesystem/issues",
-                "source": "https://github.com/reactphp/filesystem/tree/master"
-            },
             "time": "2018-10-22T12:10:29+00:00"
         },
         {
@@ -2700,10 +2513,6 @@
             "keywords": [
                 "http"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/http-client/issues",
-                "source": "https://github.com/reactphp/http-client/tree/v0.5.10"
-            },
             "time": "2020-01-14T08:36:16+00:00"
         },
         {
@@ -2750,10 +2559,6 @@
                 "promise",
                 "promises"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/promise/issues",
-                "source": "https://github.com/reactphp/promise/tree/2.x"
-            },
             "time": "2019-01-07T21:25:54+00:00"
         },
         {
@@ -2810,10 +2615,6 @@
                 "stream",
                 "unwrap"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/promise-stream/issues",
-                "source": "https://github.com/reactphp/promise-stream/tree/v1.2.0"
-            },
             "time": "2019-07-03T12:29:10+00:00"
         },
         {
@@ -2867,39 +2668,34 @@
                 "timeout",
                 "timer"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/promise-timer/issues",
-                "source": "https://github.com/reactphp/promise-timer/tree/v1.5.1"
-            },
             "time": "2019-03-27T18:10:32+00:00"
         },
         {
             "name": "react/socket",
-            "version": "v1.4.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "97522e24987365e1ed873f0f4884900747a668e0"
+                "reference": "34381d9282d12670eb56b45981aad82e033ed58f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/97522e24987365e1ed873f0f4884900747a668e0",
-                "reference": "97522e24987365e1ed873f0f4884900747a668e0",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/34381d9282d12670eb56b45981aad82e033ed58f",
+                "reference": "34381d9282d12670eb56b45981aad82e033ed58f",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
-                "react/dns": "^1.1",
-                "react/event-loop": "^1.0 || ^0.5",
+                "react/dns": "^0.4.13",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
                 "react/promise": "^2.6.0 || ^1.2.1",
                 "react/promise-timer": "^1.4.0",
-                "react/stream": "^1.1"
+                "react/stream": "^1.0 || ^0.7.1"
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
-                "phpunit/phpunit": "^7.5 || ^6.4 || ^5.7 || ^4.8.35",
-                "react/promise-stream": "^1.2"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -2919,24 +2715,20 @@
                 "reactphp",
                 "stream"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/socket/issues",
-                "source": "https://github.com/reactphp/socket/tree/v1.4.0"
-            },
-            "time": "2020-03-12T12:15:14+00:00"
+            "time": "2018-10-01T12:20:53+00:00"
         },
         {
             "name": "react/stream",
-            "version": "v1.1.0",
+            "version": "v0.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "50426855f7a77ddf43b9266c22320df5bf6c6ce6"
+                "reference": "10100896018fd847a257cd81143b8e1b7be08e40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/50426855f7a77ddf43b9266c22320df5bf6c6ce6",
-                "reference": "50426855f7a77ddf43b9266c22320df5bf6c6ce6",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/10100896018fd847a257cd81143b8e1b7be08e40",
+                "reference": "10100896018fd847a257cd81143b8e1b7be08e40",
                 "shasum": ""
             },
             "require": {
@@ -2969,11 +2761,7 @@
                 "stream",
                 "writable"
             ],
-            "support": {
-                "issues": "https://github.com/reactphp/stream/issues",
-                "source": "https://github.com/reactphp/stream/tree/master"
-            },
-            "time": "2019-01-01T16:15:09+00:00"
+            "time": "2018-01-19T15:04:38+00:00"
         },
         {
             "name": "reactivex/rxphp",
@@ -3038,10 +2826,6 @@
                 "reactive",
                 "rx"
             ],
-            "support": {
-                "issues": "https://github.com/ReactiveX/RxPHP/issues",
-                "source": "https://github.com/ReactiveX/RxPHP/tree/master"
-            },
             "time": "2018-04-18T01:34:36+00:00"
         },
         {
@@ -3100,10 +2884,224 @@
                 "stream",
                 "uri"
             ],
-            "support": {
-                "source": "https://github.com/ringcentral/psr7/tree/master"
-            },
             "time": "2018-01-15T21:00:49+00:00"
+        },
+        {
+            "name": "rx/await",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RxPHP/RxAwait.git",
+                "reference": "f88edfbb99621c81eaa8dcd37558efdd220ec992"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RxPHP/RxAwait/zipball/f88edfbb99621c81eaa8dcd37558efdd220ec992",
+                "reference": "f88edfbb99621c81eaa8dcd37558efdd220ec992",
+                "shasum": ""
+            },
+            "require": {
+                "reactivex/rxphp": "^2.0",
+                "voryx/event-loop": "^2.0 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Provides await functionality for RxPHP",
+            "keywords": [
+                "await",
+                "reactivex",
+                "reactphp",
+                "rx.php",
+                "rxphp"
+            ],
+            "time": "2018-04-18T02:34:20+00:00"
+        },
+        {
+            "name": "rx/http",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RxPHP/RxHttp.git",
+                "reference": "2ac4dd8e6cde58efb3f9987b53acbb4536edb3f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RxPHP/RxHttp/zipball/2ac4dd8e6cde58efb3f9987b53acbb4536edb3f6",
+                "reference": "2ac4dd8e6cde58efb3f9987b53acbb4536edb3f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "react/http-client": "^0.5.0",
+                "reactivex/rxphp": "^2.0",
+                "voryx/event-loop": "^3.0 || ^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rx\\React\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Http Client for RxPHP",
+            "keywords": [
+                "http",
+                "react",
+                "reactivex",
+                "reactphp",
+                "rx.php",
+                "rxphp"
+            ],
+            "time": "2018-04-18T10:33:04+00:00"
+        },
+        {
+            "name": "rx/operator-extras",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RxPHP/RxOperatorExtras.git",
+                "reference": "b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RxPHP/RxOperatorExtras/zipball/b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae",
+                "reference": "b3cdae8ad4fe9481cf8f3c3a5fd52d2dfc9c8cae",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "reactivex/rxphp": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rx\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extra Operators and Observables for RxPHP",
+            "keywords": [
+                "reactivex",
+                "rx.php",
+                "rxphp"
+            ],
+            "time": "2017-03-23T12:29:46+00:00"
+        },
+        {
+            "name": "rx/stream",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RxPHP/RxStream.git",
+                "reference": "9e55d937edbc9bda67114c8ffedbeae487817cd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RxPHP/RxStream/zipball/9e55d937edbc9bda67114c8ffedbeae487817cd0",
+                "reference": "9e55d937edbc9bda67114c8ffedbeae487817cd0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "react/stream": "^0.7.0",
+                "reactivex/rxphp": "^2.0",
+                "rx/operator-extras": "^2.0",
+                "voryx/event-loop": "^3.0 || ^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rx\\React\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Async Stream for RxPHP",
+            "keywords": [
+                "react",
+                "reactivex",
+                "reactphp",
+                "rx.php",
+                "rxphp",
+                "stream"
+            ],
+            "time": "2018-04-18T10:31:37+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -3156,23 +3154,6 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/css-selector/tree/5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -3234,23 +3215,6 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/dom-crawler/tree/5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
@@ -3308,23 +3272,6 @@
                 "ctype",
                 "polyfill",
                 "portable"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.15.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -3388,23 +3335,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.15.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-09T19:04:49+00:00"
         },
         {
@@ -3464,23 +3394,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.15.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-09T19:04:49+00:00"
         },
         {
@@ -3536,23 +3449,6 @@
                 "portable",
                 "shim"
             ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php72/tree/v1.15.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-02-27T09:26:54+00:00"
         },
         {
@@ -3601,10 +3497,6 @@
                 "os",
                 "os detection"
             ],
-            "support": {
-                "issues": "https://github.com/tivie/php-os-detector/issues",
-                "source": "https://github.com/tivie/php-os-detector/tree/master"
-            },
             "time": "2017-10-21T03:33:59+00:00"
         },
         {
@@ -3661,10 +3553,6 @@
                 "static",
                 "timer"
             ],
-            "support": {
-                "issues": "https://github.com/voryx/event-loop/issues",
-                "source": "https://github.com/voryx/event-loop/tree/master"
-            },
             "time": "2018-04-18T00:07:06+00:00"
         },
         {
@@ -3724,33 +3612,27 @@
                 "reactive",
                 "rx.php"
             ],
-            "support": {
-                "issues": "https://github.com/voryx/PgAsync/issues",
-                "source": "https://github.com/voryx/PgAsync/tree/master"
-            },
             "time": "2019-08-19T20:34:34+00:00"
         },
         {
             "name": "wyrihaximus/cpu-core-detector",
-            "version": "1.0.2",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-cpu-core-detector.git",
-                "reference": "fff4194540a8111c298e5e707bcfc778c4c9ddbb"
+                "reference": "459dbf380172f06de6bf1aaecb9b1a003f7937b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-cpu-core-detector/zipball/fff4194540a8111c298e5e707bcfc778c4c9ddbb",
-                "reference": "fff4194540a8111c298e5e707bcfc778c4c9ddbb",
+                "url": "https://api.github.com/repos/WyriHaximus/php-cpu-core-detector/zipball/459dbf380172f06de6bf1aaecb9b1a003f7937b1",
+                "reference": "459dbf380172f06de6bf1aaecb9b1a003f7937b1",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.4||^7.0",
-                "react/child-process": "^0.6 || ^0.5 || ^0.4",
-                "react/socket": "^1.2",
-                "tivie/php-os-detector": "^1.1",
-                "wyrihaximus/file-descriptors": "^1.0 || ^0.1",
-                "wyrihaximus/react-child-process-promise": "^2.0.2",
+                "react/child-process": "^0.5 || ^0.4",
+                "tivie/php-os-detector": "^1.0",
+                "wyrihaximus/react-child-process-promise": "^2.0",
                 "wyrihaximus/ticking-promise": "^1.5"
             },
             "require-dev": {
@@ -3778,12 +3660,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "description": "Detect CPU core count and assign tasks to a specific code",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-cpu-core-detector/issues",
-                "source": "https://github.com/WyriHaximus/php-cpu-core-detector/tree/1.0.x"
-            },
-            "time": "2019-01-19T21:54:34+00:00"
+            "time": "2018-02-24T17:44:46+00:00"
         },
         {
             "name": "wyrihaximus/file-descriptors",
@@ -3825,10 +3702,6 @@
                 }
             ],
             "description": "List open file descriptors for the current process cross platform",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-file-descriptors/issues",
-                "source": "https://github.com/WyriHaximus/php-file-descriptors/tree/master"
-            },
             "time": "2019-01-15T16:08:10+00:00"
         },
         {
@@ -3873,10 +3746,6 @@
                 }
             ],
             "description": "JSON encode and decode throwables and exceptions",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-json-throwable/issues",
-                "source": "https://github.com/WyriHaximus/php-json-throwable/tree/master"
-            },
             "time": "2018-03-15T13:05:59+00:00"
         },
         {
@@ -3920,10 +3789,6 @@
                 }
             ],
             "description": "Utilities for php-json-* packages",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/php-json-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-json-utilities/tree/master"
-            },
             "time": "2018-12-25T10:58:17+00:00"
         },
         {
@@ -3981,40 +3846,34 @@
                 }
             ],
             "description": "Messenger decorator for react/child-process",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/reactphp-child-process-messenger/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-child-process-messenger/tree/master"
-            },
             "time": "2019-08-28T15:10:40+00:00"
         },
         {
             "name": "wyrihaximus/react-child-process-pool",
-            "version": "1.6.0",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-child-process-pool.git",
-                "reference": "c5063e10d12894e20f17eb1aadf2437232450c08"
+                "reference": "232f2aef55ce6df816f837442e79ff2976ebc8ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-pool/zipball/c5063e10d12894e20f17eb1aadf2437232450c08",
-                "reference": "c5063e10d12894e20f17eb1aadf2437232450c08",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-pool/zipball/232f2aef55ce6df816f837442e79ff2976ebc8ed",
+                "reference": "232f2aef55ce6df816f837442e79ff2976ebc8ed",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0",
-                "php": "^7.0 || ^5.4",
-                "react/event-loop": "^1.1",
-                "wyrihaximus/cpu-core-detector": "^1.0.2",
-                "wyrihaximus/file-descriptors": "^1.0 || ^0.1",
-                "wyrihaximus/react-child-process-messenger": "^2.10",
+                "php": "^5.4||^7.0",
+                "wyrihaximus/cpu-core-detector": "^1.0.0",
+                "wyrihaximus/react-child-process-messenger": "^2.7.1",
                 "wyrihaximus/ticking-promise": "^1.5"
             },
             "require-dev": {
-                "clue/block-react": "^1.3",
+                "clue/block-react": "^1.1",
                 "phake/phake": "^2.2.1",
                 "phpunit/phpunit": "^4.8.35||^5.0",
-                "squizlabs/php_codesniffer": "^3.3.2",
+                "squizlabs/php_codesniffer": "^1.5.6",
                 "vectorface/dunit": "~2.0"
             },
             "suggest": {
@@ -4039,12 +3898,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "description": "Pool wyrihaximus/react-child-process-messenger processes",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/reactphp-child-process-pool/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-child-process-pool/tree/master"
-            },
-            "time": "2019-08-28T16:54:46+00:00"
+            "time": "2018-04-23T17:21:00+00:00"
         },
         {
             "name": "wyrihaximus/react-child-process-promise",
@@ -4092,10 +3946,6 @@
                 }
             ],
             "description": "Wrapping ticks into a promise",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/reactphp-child-process-promise/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-child-process-promise/tree/master"
-            },
             "time": "2019-01-18T21:42:17+00:00"
         },
         {
@@ -4143,17 +3993,15 @@
                 }
             ],
             "description": "Wrapping ticks into a promise",
-            "support": {
-                "issues": "https://github.com/WyriHaximus/TickingPromise/issues",
-                "source": "https://github.com/WyriHaximus/TickingPromise/tree/master"
-            },
             "time": "2018-04-05T12:36:50+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "rx/stream": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -4161,6 +4009,5 @@
         "ext-pdo": "*",
         "ext-json": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }

@@ -24,7 +24,10 @@
         "amphp/parallel":           "^1.4" ,
         "ext-pdo":                  "*" ,
         "ext-json": "*",
-        "symfony/css-selector": "^5.0"
+        "symfony/css-selector": "^5.0",
+        "rx/http": "^2.1",
+        "rx/stream": "dev-master",
+        "rx/await": "^2.1"
     } ,
     "autoload":          {
         "psr-4": {

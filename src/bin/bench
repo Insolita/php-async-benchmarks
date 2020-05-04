@@ -12,8 +12,8 @@ if(isset($options['help'])){
 }
 
 $client = $options['t'] ?? null;
-if(!$client || ! in_array($client, ['guzzle','react', 'amp'])){
-    echo 'Please, define one of clients for benchmark (guzzle, react, amp)'.PHP_EOL;
+if(!$client || ! in_array($client, ['guzzle','react', 'amp', 'rx'])){
+    echo 'Please, define one of clients for benchmark (guzzle, react, amp, rx)'.PHP_EOL;
     usage();
     exit();
 }
