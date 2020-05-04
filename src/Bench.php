@@ -6,6 +6,7 @@ use Amp\Loop;
 use app\clients\Amphp;
 use app\clients\Guzzle;
 use app\clients\Reactphp;
+use app\clients\Rxphp;
 use BadMethodCallException;
 use function rmdir;
 use function unlink;
@@ -68,6 +69,11 @@ class Bench
                 $loop->run();
                 $loop->stop();
                 unset($client, $loop);
+                break;
+            case 'rx':
+                $client = new Rxphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir);
+                $client->run();
+                unset($client);
                 break;
             case 'guzzle':
                 $client = new Guzzle($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir);
