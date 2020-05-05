@@ -26,7 +26,7 @@
         "ext-json": "*",
         "symfony/css-selector": "^5.0",
         "rx/http": "^2.1",
-        "rx/stream": "dev-master",
+        "rx/stream": "^3.0.2",
         "rx/await": "^2.1"
     } ,
     "autoload":          {

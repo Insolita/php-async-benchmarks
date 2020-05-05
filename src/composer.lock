@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f71f91da319a24236020fa34d55e1335",
+    "content-hash": "0a4371d8dae9b7f0d4c2c99aa3683fb8",
     "packages": [
         {
             "name": "amphp/amp",
@@ -2287,16 +2287,16 @@
         },
         {
             "name": "react/child-process",
-            "version": "v0.5.2",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "aae49d7f1340bafb695b9af3ce4421ea41a39620"
+                "reference": "6895afa583d51dc10a4b9e93cd3bce17b3b77ac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/aae49d7f1340bafb695b9af3ce4421ea41a39620",
-                "reference": "aae49d7f1340bafb695b9af3ce4421ea41a39620",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/6895afa583d51dc10a4b9e93cd3bce17b3b77ac3",
+                "reference": "6895afa583d51dc10a4b9e93cd3bce17b3b77ac3",
                 "shasum": ""
             },
             "require": {
@@ -2306,7 +2306,8 @@
                 "react/stream": "^1.0 || ^0.7.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35",
+                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35",
+                "react/socket": "^1.0",
                 "sebastian/environment": "^3.0 || ^2.0 || ^1.0"
             },
             "type": "library",
@@ -2325,29 +2326,28 @@
                 "process",
                 "reactphp"
             ],
-            "time": "2018-01-18T14:53:06+00:00"
+            "time": "2019-02-15T13:48:16+00:00"
         },
         {
             "name": "react/dns",
-            "version": "v0.4.19",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "6852fb98e22d2e5bb35fe5aeeaa96551b120e7c9"
+                "reference": "a214d90c2884dac18d0cac6176202f247b66d762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/6852fb98e22d2e5bb35fe5aeeaa96551b120e7c9",
-                "reference": "6852fb98e22d2e5bb35fe5aeeaa96551b120e7c9",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/a214d90c2884dac18d0cac6176202f247b66d762",
+                "reference": "a214d90c2884dac18d0cac6176202f247b66d762",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/cache": "^1.0 || ^0.6 || ^0.5",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "^2.1 || ^1.2.1",
-                "react/promise-timer": "^1.2",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.5"
+                "react/event-loop": "^1.0 || ^0.5",
+                "react/promise": "^2.7 || ^1.2.1",
+                "react/promise-timer": "^1.2"
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
@@ -2370,7 +2370,7 @@
                 "dns-resolver",
                 "reactphp"
             ],
-            "time": "2019-07-10T21:00:53+00:00"
+            "time": "2019-08-15T09:06:31+00:00"
         },
         {
             "name": "react/event-loop",
@@ -2672,30 +2672,31 @@
         },
         {
             "name": "react/socket",
-            "version": "v1.1.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "34381d9282d12670eb56b45981aad82e033ed58f"
+                "reference": "97522e24987365e1ed873f0f4884900747a668e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/34381d9282d12670eb56b45981aad82e033ed58f",
-                "reference": "34381d9282d12670eb56b45981aad82e033ed58f",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/97522e24987365e1ed873f0f4884900747a668e0",
+                "reference": "97522e24987365e1ed873f0f4884900747a668e0",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
-                "react/dns": "^0.4.13",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
+                "react/dns": "^1.1",
+                "react/event-loop": "^1.0 || ^0.5",
                 "react/promise": "^2.6.0 || ^1.2.1",
                 "react/promise-timer": "^1.4.0",
-                "react/stream": "^1.0 || ^0.7.1"
+                "react/stream": "^1.1"
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
-                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
+                "phpunit/phpunit": "^7.5 || ^6.4 || ^5.7 || ^4.8.35",
+                "react/promise-stream": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -2715,20 +2716,20 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2018-10-01T12:20:53+00:00"
+            "time": "2020-03-12T12:15:14+00:00"
         },
         {
             "name": "react/stream",
-            "version": "v0.7.7",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "10100896018fd847a257cd81143b8e1b7be08e40"
+                "reference": "7c02b510ee3f582c810aeccd3a197b9c2f52ff1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/10100896018fd847a257cd81143b8e1b7be08e40",
-                "reference": "10100896018fd847a257cd81143b8e1b7be08e40",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/7c02b510ee3f582c810aeccd3a197b9c2f52ff1a",
+                "reference": "7c02b510ee3f582c810aeccd3a197b9c2f52ff1a",
                 "shasum": ""
             },
             "require": {
@@ -2738,7 +2739,7 @@
             },
             "require-dev": {
                 "clue/stream-filter": "~1.2",
-                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
+                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -2761,7 +2762,7 @@
                 "stream",
                 "writable"
             ],
-            "time": "2018-01-19T15:04:38+00:00"
+            "time": "2020-05-04T10:17:57+00:00"
         },
         {
             "name": "reactivex/rxphp",
@@ -3048,21 +3049,21 @@
         },
         {
             "name": "rx/stream",
-            "version": "dev-master",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RxPHP/RxStream.git",
-                "reference": "9e55d937edbc9bda67114c8ffedbeae487817cd0"
+                "reference": "9273bc43de1a1a67048a6bc57f2d5c8aa6e89a53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RxPHP/RxStream/zipball/9e55d937edbc9bda67114c8ffedbeae487817cd0",
-                "reference": "9e55d937edbc9bda67114c8ffedbeae487817cd0",
+                "url": "https://api.github.com/repos/RxPHP/RxStream/zipball/9273bc43de1a1a67048a6bc57f2d5c8aa6e89a53",
+                "reference": "9273bc43de1a1a67048a6bc57f2d5c8aa6e89a53",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "react/stream": "^0.7.0",
+                "react/stream": "^1.0 || ^0.7.1",
                 "reactivex/rxphp": "^2.0",
                 "rx/operator-extras": "^2.0",
                 "voryx/event-loop": "^3.0 || ^2.0"
@@ -3082,13 +3083,13 @@
             ],
             "authors": [
                 {
-                    "name": "Matt Bonneau",
-                    "email": "matt@bonneau.net",
+                    "name": "David Dan",
+                    "email": "davidwdan@gmail.com",
                     "role": "Developer"
                 },
                 {
-                    "name": "David Dan",
-                    "email": "davidwdan@gmail.com",
+                    "name": "Matt Bonneau",
+                    "email": "matt@bonneau.net",
                     "role": "Developer"
                 }
             ],
@@ -3101,7 +3102,7 @@
                 "rxphp",
                 "stream"
             ],
-            "time": "2018-04-18T10:31:37+00:00"
+            "time": "2020-05-05T14:08:40+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -3616,23 +3617,25 @@
         },
         {
             "name": "wyrihaximus/cpu-core-detector",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-cpu-core-detector.git",
-                "reference": "459dbf380172f06de6bf1aaecb9b1a003f7937b1"
+                "reference": "fff4194540a8111c298e5e707bcfc778c4c9ddbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-cpu-core-detector/zipball/459dbf380172f06de6bf1aaecb9b1a003f7937b1",
-                "reference": "459dbf380172f06de6bf1aaecb9b1a003f7937b1",
+                "url": "https://api.github.com/repos/WyriHaximus/php-cpu-core-detector/zipball/fff4194540a8111c298e5e707bcfc778c4c9ddbb",
+                "reference": "fff4194540a8111c298e5e707bcfc778c4c9ddbb",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.4||^7.0",
-                "react/child-process": "^0.5 || ^0.4",
-                "tivie/php-os-detector": "^1.0",
-                "wyrihaximus/react-child-process-promise": "^2.0",
+                "react/child-process": "^0.6 || ^0.5 || ^0.4",
+                "react/socket": "^1.2",
+                "tivie/php-os-detector": "^1.1",
+                "wyrihaximus/file-descriptors": "^1.0 || ^0.1",
+                "wyrihaximus/react-child-process-promise": "^2.0.2",
                 "wyrihaximus/ticking-promise": "^1.5"
             },
             "require-dev": {
@@ -3660,7 +3663,8 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2018-02-24T17:44:46+00:00"
+            "description": "Detect CPU core count and assign tasks to a specific code",
+            "time": "2019-01-19T21:54:34+00:00"
         },
         {
             "name": "wyrihaximus/file-descriptors",
@@ -3850,30 +3854,32 @@
         },
         {
             "name": "wyrihaximus/react-child-process-pool",
-            "version": "1.4.2",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-child-process-pool.git",
-                "reference": "232f2aef55ce6df816f837442e79ff2976ebc8ed"
+                "reference": "c5063e10d12894e20f17eb1aadf2437232450c08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-pool/zipball/232f2aef55ce6df816f837442e79ff2976ebc8ed",
-                "reference": "232f2aef55ce6df816f837442e79ff2976ebc8ed",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-pool/zipball/c5063e10d12894e20f17eb1aadf2437232450c08",
+                "reference": "c5063e10d12894e20f17eb1aadf2437232450c08",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0",
-                "php": "^5.4||^7.0",
-                "wyrihaximus/cpu-core-detector": "^1.0.0",
-                "wyrihaximus/react-child-process-messenger": "^2.7.1",
+                "php": "^7.0 || ^5.4",
+                "react/event-loop": "^1.1",
+                "wyrihaximus/cpu-core-detector": "^1.0.2",
+                "wyrihaximus/file-descriptors": "^1.0 || ^0.1",
+                "wyrihaximus/react-child-process-messenger": "^2.10",
                 "wyrihaximus/ticking-promise": "^1.5"
             },
             "require-dev": {
-                "clue/block-react": "^1.1",
+                "clue/block-react": "^1.3",
                 "phake/phake": "^2.2.1",
                 "phpunit/phpunit": "^4.8.35||^5.0",
-                "squizlabs/php_codesniffer": "^1.5.6",
+                "squizlabs/php_codesniffer": "^3.3.2",
                 "vectorface/dunit": "~2.0"
             },
             "suggest": {
@@ -3898,7 +3904,8 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2018-04-23T17:21:00+00:00"
+            "description": "Pool wyrihaximus/react-child-process-messenger processes",
+            "time": "2019-08-28T16:54:46+00:00"
         },
         {
             "name": "wyrihaximus/react-child-process-promise",
@@ -3999,9 +4006,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "rx/stream": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
