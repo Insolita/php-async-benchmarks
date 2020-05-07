@@ -13,11 +13,10 @@ use Amp\Iterator;
 use Amp\Producer;
 use Amp\Promise;
 use Amp\Sync\LocalSemaphore;
-use Amp\Sync\Lock;
 use Symfony\Component\DomCrawler\Crawler;
-use function Amp\asyncCall;
 use function Amp\call;
 use function Amp\Promise\wait;
+use function Amp\Sync\ConcurrentIterator\each;
 
 class Amphp
 {
@@ -78,34 +77,20 @@ class Amphp
             $this->badFile = yield File\open($this->tempDir . '/bad.txt', 'a');
 
             try {
-                $semaphore = new LocalSemaphore($this->concurrency);
-
-                while (yield $urls->advance()) {
-                    $url = $urls->getCurrent();
-
-                    /** @var Lock $lock */
-                    $lock = yield $semaphore->acquire();
-
-                    asyncCall(function () use ($url, $lock) {
+                yield each(
+                    $urls,
+                    new LocalSemaphore($this->concurrency),
+                    function (string $url) {
                         try {
                             /** @var Response $response */
                             $response = yield $this->client->request(new Request($url));
                             yield $this->processHtml(yield $response->getBody()->buffer(), $url);
                         } catch (\Throwable $e) {
                             yield $this->badFile->write($url . \PHP_EOL);
-                        } finally {
-                            $lock->release();
                         }
-                    });
-                }
+                    }
+                );
             } finally {
-                $locks = [];
-
-                // Acquire all locks to ensure all requests finished
-                for ($i = 0; $i < $this->concurrency; $i++) {
-                    $locks[] = yield $semaphore->acquire();
-                }
-
                 yield $this->goodFile->close();
                 yield $this->badFile->close();
             }
