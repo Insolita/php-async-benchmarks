@@ -2,13 +2,11 @@
 
 namespace app;
 
-use app\clients\Guzzle;
 use app\clients\GuzzleDb;
 use app\clients\ReactDb;
-use app\clients\Reactphp;
+use React\EventLoop\Factory;
 use BadMethodCallException;
 use PDO;
-use const PHP_EOL;
 
 class BenchDb
 {
@@ -38,7 +36,7 @@ class BenchDb
             $this->runClient();
             $end = microtime(true);
             $delta = $end - $start;
-            echo $i. ' - '. $delta.PHP_EOL;
+            echo $i . ' - ' . $delta . PHP_EOL;
             $this->deltas[] = $delta;
         }
         $this->printResult();
@@ -69,15 +67,15 @@ SQL;
 
     private function clearDbData()
     {
-        $this->db->query("TRUNCATE {$this->clientName}_links RESTART IDENTITY")->execute();
-        $this->db->query("TRUNCATE {$this->clientName}_urls RESTART IDENTITY")->execute();
+        $this->db->query('TRUNCATE ' . $this->clientName . '_links RESTART IDENTITY')->execute();
+        $this->db->query('TRUNCATE ' . $this->clientName . '_urls RESTART IDENTITY')->execute();
     }
 
     private function runClient()
     {
-        switch ($this->clientName){
+        switch ($this->clientName) {
             case 'react':
-                $loop = \React\EventLoop\Factory::create();
+                $loop = Factory::create();
                 $client = new ReactDb($this->batchSize, self::URL_PATH, $this->dbconf, $loop);
                 $client->run();
                 $loop->run();
@@ -97,14 +95,14 @@ SQL;
     private function printResult()
     {
         $result = [
-            'client'=>$this->clientName,
-            'batchSize'=>$this->batchSize,
-            'iterations'=>$this->iterations,
-            'max'=>max($this->deltas),
-            'min'=>min($this->deltas),
-            'avg'=>round(array_sum($this->deltas)/$this->iterations, 4)
+            'client' => $this->clientName,
+            'batchSize' => $this->batchSize,
+            'iterations' => $this->iterations,
+            'max' => max($this->deltas),
+            'min' => min($this->deltas),
+            'avg' => round(array_sum($this->deltas) / $this->iterations, 4)
         ];
 
-        echo print_r($result, true).PHP_EOL;
+        echo print_r($result, true) . PHP_EOL;
     }
 }

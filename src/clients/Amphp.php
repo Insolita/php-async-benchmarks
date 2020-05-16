@@ -63,7 +63,7 @@ class Amphp
                 while (($line = yield $lineReader->readLine()) && $num < $this->batchSize) {
                     $num++;
 
-                    yield $emit(\trim($line));
+                    yield $emit(trim($line));
                 }
             } finally {
                 yield $fileHandle->close();
@@ -92,7 +92,7 @@ class Amphp
                             $response = yield $this->client->request(new Request($url));
                             yield $this->processHtml(yield $response->getBody()->buffer(), $url);
                         } catch (\Throwable $e) {
-                            yield $this->badFile->write($url . \PHP_EOL);
+                            yield $this->badFile->write($url . PHP_EOL);
                         } finally {
                             $lock->release();
                         }
@@ -116,9 +116,9 @@ class Amphp
     {
         return call(function () use ($html, $url) {
             $crawler = new Crawler($html);
-            $title = $crawler->filterXPath('//title')->text("No title");
+            $title = $crawler->filterXPath('//title')->text('No title');
 
-            yield $this->goodFile->write("$url,$title" . \PHP_EOL);
+            yield $this->goodFile->write($url . ',' . $title . PHP_EOL);
         });
     }
 }

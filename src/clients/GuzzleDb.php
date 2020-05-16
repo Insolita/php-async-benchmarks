@@ -20,7 +20,7 @@ class GuzzleDb
     private PDO $db;
 
     /**
-     * @var \GuzzleHttp\Client
+     * @var Client
      */
     private Client $client;
 
@@ -35,17 +35,17 @@ class GuzzleDb
     public function run()
     {
         $pool = new Pool($this->client, $this->requestGenerator(), [
-            'fulfilled' => function(Response $response, $index) {
+            'fulfilled' => function (Response $response, $index) {
                 $body = $response->getBody()->getContents();
                 $crawler = new Crawler($body, $index);
-                $title = $crawler->filterXPath('//title')->text("No title");
+                $title = $crawler->filterXPath('//title')->text('No title');
                 $links = $crawler->filter('a')->links();
-                $links = array_map(fn(Link $link) => \urldecode($link->getUri()), $links);
-                $links = \array_filter($links, fn($link)=>\strpos($link, 'https')!== false);
+                $links = array_map(fn (Link $link) => urldecode($link->getUri()), $links);
+                $links = array_filter($links, fn ($link) => strpos($link, 'https') !== false);
                 $status = $response->getStatusCode();
                 $this->dbWrite($index, $status, $title, $links);
             },
-            'rejected' => function(RequestException $reason, $index) {
+            'rejected' => function (RequestException $reason, $index) {
                 $this->dbWrite($index, $reason->getCode(), $reason->getMessage(), []);
             },
         ]);
@@ -60,7 +60,7 @@ class GuzzleDb
             $num = 0;
             while (($line = fgets($f)) && $num < $this->batchSize) {
                 $num++;
-                $url = \trim($line);
+                $url = trim($line);
                 yield $url => new Request('GET', $url);
             }
         } finally {
@@ -71,12 +71,12 @@ class GuzzleDb
     private function dbWrite(string $url, int $status, string $title, array $links)
     {
         $this->db->prepare('INSERT INTO guzzle_urls (url, title, status) VALUES (?, ?, ?)')
-                       ->execute([$url, $title, $status]);
-        if(\count($links)){
+            ->execute([$url, $title, $status]);
+        if (count($links)) {
             $id = $this->db->lastInsertId();
-            foreach ($links as $link){
+            foreach ($links as $link) {
                 $this->db->prepare('INSERT INTO guzzle_links (url_id, link) VALUES (?, ?)')
-                         ->execute([$id, $link]);
+                    ->execute([$id, $link]);
             }
         }
     }

@@ -1,57 +1,65 @@
 #! /usr/bin/env php
 <?php
+
 use app\Bench;
 use app\BenchDb;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $options = getopt('t:b::c::i::', ['batch::', 'iters::', 'conk::', 'db::', 'help::']);
-if(isset($options['help'])){
+if (isset($options['help'])) {
     usage();
     exit(0);
 }
 
 $client = $options['t'] ?? null;
-if(!$client || ! in_array($client, ['guzzle','react', 'amp'])){
-    echo 'Please, define one of clients for benchmark (guzzle, react, amp)'.PHP_EOL;
+if (!$client || !in_array($client, ['guzzle', 'react', 'amp'])) {
+    echo 'Please, define one of clients for benchmark (guzzle, react, amp)' . PHP_EOL;
     usage();
     exit();
 }
 
 $batchSize = (int)($options['b'] ?? $options['batch'] ?? 0);
-if($batchSize > 6000){
+if ($batchSize > 6000) {
     $batchSize = 6000;
 }
-if($batchSize <= 0){
+if ($batchSize <= 0) {
     $batchSize = 10;
 }
 
 
 $concurrency = (int)($options['c'] ?? $options['conk'] ?? 0);
-if($concurrency <= 0){
+if ($concurrency <= 0) {
     $concurrency = 25;
 }
 
-$iterations = (int)($options['i']?? $options['iters'] ?? 0);
-if($iterations <= 0){
+$iterations = (int)($options['i'] ?? $options['iters'] ?? 0);
+if ($iterations <= 0) {
     $iterations = 1;
 }
 
 $useDb = isset($options['db']);
 
 $mem = memory_get_peak_usage();
-if(!$useDb){
-   (new Bench($client, $iterations, $concurrency, $batchSize))->run();
-}else{
-    $dbconf = ['dsn'=>'pgsql:host=db;dbname=pgtest', 'host'=>'db','dbname'=>'pgtest', 'user'=>'pgdev', 'pass'=>'pgdev'];
+if (!$useDb) {
+    (new Bench($client, $iterations, $concurrency, $batchSize))->run();
+} else {
+    $dbconf = [
+        'dsn' => 'pgsql:host=db;dbname=pgtest',
+        'host' => 'db',
+        'dbname' => 'pgtest',
+        'user' => 'pgdev',
+        'pass' => 'pgdev'
+    ];
     (new BenchDb($client, $iterations, $batchSize, $dbconf))->run();
 }
 
 $memEnd = memory_get_peak_usage();
-$memDelta = round(($memEnd - $mem)/(1024*1024), 2);
+$memDelta = round(($memEnd - $mem) / (1024 * 1024), 2);
 var_dump(compact('mem', 'memEnd', 'memDelta'));
 
-function usage(){
+function usage()
+{
     echo <<<TXT
     Simple usage: 
            bench -t={clientname}
@@ -65,7 +73,6 @@ function usage(){
            -i --iters   Number of iterations for run benchmark and than calculate average time
            --db         Benchmark with database version, instead of file version
            --help       Show this instruction
-           
 
 TXT;
 

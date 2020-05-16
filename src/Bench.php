@@ -6,10 +6,8 @@ use Amp\Loop;
 use app\clients\Amphp;
 use app\clients\Guzzle;
 use app\clients\Reactphp;
-use BadMethodCallException;
-use function rmdir;
-use function unlink;
-use const PHP_EOL;
+use React\EventLoop\Factory as ReactPhpFactory;
+use UnexpectedValueException;
 
 class Bench
 {
@@ -26,8 +24,6 @@ class Bench
 
     private string $tempDir;
 
-    private $startTime;
-    private $finishTime;
     private array $deltas = [];
 
     public function __construct(string $clientName, int $iterations, int $concurrency, int $batchSize)
@@ -47,7 +43,7 @@ class Bench
             $start = microtime(true);
             $this->runClient();
             $delta = microtime(true) - $start;
-            echo $i. ' - '. $delta.PHP_EOL;
+            echo $i . ' - ' . $delta . PHP_EOL;
             $this->deltas[] = $delta;
         }
         $this->printResult();
@@ -55,14 +51,14 @@ class Bench
 
     private function runClient()
     {
-        switch ($this->clientName){
+        switch ($this->clientName) {
             case 'amp':
                 Loop::run(
-                    fn() => (new Amphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir))->run()
+                    fn () => (new Amphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir))->run()
                 );
                 break;
             case 'react':
-                $loop = \React\EventLoop\Factory::create();
+                $loop = ReactPhpFactory::create();
                 $client = new Reactphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir, $loop);
                 $client->run();
                 $loop->run();
@@ -75,13 +71,13 @@ class Bench
                 unset($client);
                 break;
             default:
-                throw new BadMethodCallException('Not supported client');
+                throw new UnexpectedValueException('Not supported client');
         }
     }
 
     private function prepareTempDir()
     {
-        if (\file_exists($this->tempDir)) {
+        if (file_exists($this->tempDir)) {
             rmdir($this->tempDir);
         }
         mkdir($this->tempDir);
@@ -98,9 +94,9 @@ class Bench
     {
         $min = round(min($this->deltas), 4);
         $max = round(max($this->deltas), 4);
-        $avg = round(array_sum($this->deltas)/$this->iterations, 4);
-        echo "Batch size: {$this->batchSize}, Iterations: {$this->iterations}".PHP_EOL;
-        echo \str_repeat('-', 25).PHP_EOL;
-        echo "| {$this->clientName}| {$min} | {$max} | $avg |".PHP_EOL;
+        $avg = round(array_sum($this->deltas) / $this->iterations, 4);
+        echo 'Batch size: ' . $this->batchSize . ', Iterations: ' . $this->iterations . PHP_EOL;
+        echo str_repeat('-', 25) . PHP_EOL;
+        echo '| ' . $this->clientName . '|' . $min . '|' . $max . '|' . $avg . '|' . PHP_EOL;
     }
 }

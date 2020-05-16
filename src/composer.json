@@ -1,35 +1,37 @@
 {
-    "name":              "insolita/reactbench" ,
-    "description":       "Benchmark for reactphp" ,
-    "minimum-stability": "stable" ,
-    "license":           "MIT" ,
-    "authors":           [
-        {
-            "name":  "insolita" ,
-            "email": "webmaster100500@ya.ru"
-        }
-    ] ,
-    "require":           {
-        "php":                           "^7.4" ,
-        "guzzlehttp/guzzle":        "^6.0" ,
-        "react/filesystem":         "^0.1" ,
-        "voryx/pgasync":            "^2.0" ,
-        "amphp/file":               "^1.0" ,
-        "amphp/parallel-functions": "^0.1" ,
-        "amphp/http-client":        "^4.3" ,
-        "amphp/postgres":           "^1.2",
-        "clue/buzz-react":          "^2.7",
-        "symfony/dom-crawler":      "^5.0",
-        "clue/mq-react":            "^1.2",
-        "amphp/parallel":           "^1.4" ,
-        "ext-pdo":                  "*" ,
-        "ext-json": "*",
-        "symfony/css-selector": "^5.0"
-    } ,
-    "autoload":          {
-        "psr-4": {
-            "app\\": "./"
-        }
-    },
-    "bin": ["bin/bench"]
+  "name": "insolita/reactbench",
+  "description": "Benchmark for reactphp",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "insolita",
+      "email": "webmaster100500@ya.ru"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "guzzlehttp/guzzle": "^6.0",
+    "react/filesystem": "^0.1",
+    "voryx/pgasync": "^2.0",
+    "amphp/file": "^1.0",
+    "amphp/parallel-functions": "^0.1",
+    "amphp/http-client": "^4.3",
+    "amphp/postgres": "^1.2",
+    "clue/buzz-react": "^2.7",
+    "symfony/dom-crawler": "^5.0",
+    "clue/mq-react": "^1.2",
+    "amphp/parallel": "^1.4",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "symfony/css-selector": "^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "bin": [
+    "bin/bench"
+  ]
 }
