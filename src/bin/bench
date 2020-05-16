@@ -56,7 +56,7 @@ function usage(){
     Simple usage: 
            bench -t={clientname}
     Full featured usage examples: 
-           becnh -t=react -b5000 -c25 -i5
+           bench -t=react -b5000 -c25 -i5
            bench -t=guzzle --batch=200 --conk=5 --iters=5 --db
     Options: 
            -t           Required, one of clients - react, guzzle, amp
