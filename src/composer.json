@@ -18,6 +18,7 @@
         "amphp/parallel-functions": "^0.1" ,
         "amphp/http-client":        "^4.3" ,
         "amphp/postgres":           "^1.2" ,
+        "amphp/sync":               "^1.4" ,
         "clue/buzz-react":          "^2.8" ,
         "symfony/dom-crawler":      "^5.0" ,
         "clue/mq-react":            "^1.2" ,
