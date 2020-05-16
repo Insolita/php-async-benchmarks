@@ -4,6 +4,8 @@ services:
     image: busybox:latest
     volumes:
       - ./src:/app
+    volumes_from:
+      - db
     entrypoint: 'tail -f /dev/null'
   php-cli:
     build:
@@ -36,6 +38,4 @@ services:
       - POSTGRES_USER=pgdev
       - POSTGRES_PASSWORD=pgdev
     volumes:
-      - type: bind
-        source: ./_docker/db/testdb
-        target: /var/lib/postgresql/data
+      - "/var/lib/postgresql/data/"
