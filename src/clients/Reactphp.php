@@ -8,9 +8,12 @@ use Evenement\EventEmitter;
 use Psr\Http\Message\ResponseInterface;
 use React\EventLoop\LoopInterface;
 use React\Filesystem\Filesystem;
+use React\Filesystem\FilesystemInterface;
+use React\Socket\Connector;
 use React\Stream\WritableStreamInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use function array_slice;
+use function count;
 use function explode;
 use function React\Promise\resolve;
 use const PHP_EOL;
@@ -25,28 +28,17 @@ class Reactphp extends EventEmitter
 
     private string $tempDir;
 
-    /**
-     * @var \Clue\React\Buzz\Browser
-     */
     private Browser $browser;
 
-    /**
-     * @var \React\Filesystem\FilesystemInterface
-     */
-    private $fs;
+    private FilesystemInterface $fs;
 
     private array $urls;
 
-    /**
-     * @var \React\EventLoop\LoopInterface
-     */
-    private LoopInterface $loop;
+    private int $processed = 0;
 
     private $badFile;
 
     private $goodFile;
-
-    private $processed = 0;
 
     public function __construct(int $concurrency, int $batchSize, string $urlPath, string $tempDir, LoopInterface $loop)
     {
@@ -54,9 +46,11 @@ class Reactphp extends EventEmitter
         $this->batchSize = $batchSize;
         $this->urlPath = $urlPath;
         $this->tempDir = $tempDir;
-        $this->browser = new Browser($loop);
+        $connector = new Connector($loop, [
+            'happy_eyeballs' => false,
+        ]);
+        $this->browser = new Browser($loop, $connector);
         $this->fs = Filesystem::create($loop);
-        $this->loop = $loop;
     }
 
     public function run()
@@ -86,19 +80,20 @@ class Reactphp extends EventEmitter
                         });
             }
         });
-        $this->on('processed', function() use ($queue){
-            ++$this->processed;
-            if($this->processed === \count($this->urls)){
-                $this->badFile->then(function(WritableStreamInterface $stream){
-                     $stream->close();
-                     $this->badFile->close();
-                });
-                $this->goodFile->then(function(WritableStreamInterface $stream){
-                    $stream->close();
-                    $this->goodFile->close();
-                });
-            }
-        });
+        $this->on('processed',
+            function() use ($queue) {
+                ++$this->processed;
+                if ($this->processed === count($this->urls)) {
+                    $this->badFile->then(function(WritableStreamInterface $stream) {
+                        $stream->close();
+                        $this->badFile->close();
+                    });
+                    $this->goodFile->then(function(WritableStreamInterface $stream) {
+                        $stream->close();
+                        $this->goodFile->close();
+                    });
+                }
+            });
     }
 
     private function processHtml(string $html, string $url)
@@ -106,8 +101,8 @@ class Reactphp extends EventEmitter
         $crawler = new Crawler($html);
         $title = $crawler->filterXPath('//title')->text("No title");
         unset($crawler);
-        $this->goodFile->then(function(WritableStreamInterface $stream) use ($url) {
-            $stream->write($url . PHP_EOL);
+        $this->goodFile->then(function(WritableStreamInterface $stream) use ($url, $title) {
+            $stream->write($url . $title . PHP_EOL);
             $this->emit('processed');
             return resolve($stream);
         });
