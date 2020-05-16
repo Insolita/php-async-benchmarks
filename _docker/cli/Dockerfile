@@ -21,6 +21,9 @@ RUN  apt-get update && \
         libicu-dev \
         libzip-dev \
         libpq-dev \
+        libssl-dev \
+        libnghttp2-dev \
+        g++ \
         sudo \
         git \
         unzip\
@@ -31,7 +34,18 @@ RUN  apt-get update && \
             && docker-php-ext-install -j$(nproc) pdo_pgsql \
             && docker-php-ext-install -j$(nproc) sockets \
             && docker-php-ext-install -j$(nproc) xmlrpc \
+            && docker-php-ext-install -j$(nproc) opcache \
+            && docker-php-ext-enable opcache \
             && apt-get clean \
+            && curl -o /tmp/swoole.tar.gz https://github.com/swoole/swoole-src/archive/v4.5.1.tar.gz -L \
+            && tar zxvf /tmp/swoole.tar.gz && cd swoole-src* \
+            && phpize && ./configure --enable-openssl  --enable-http2 && make && make install \
+            && docker-php-ext-enable swoole \
+            && curl -o /tmp/swoolepg.tar.gz https://github.com/swoole/ext-postgresql/archive/v4.5.1.tar.gz -L \
+            && tar zxvf /tmp/swoolepg.tar.gz && cd swoole-src* \
+            && phpize && ./configure && make && make install\
+            && docker-php-ext-enable swoole_postgresql  \
+            && echo "swoole.fast_serialize=On" >> /usr/local/etc/php/conf.d/docker-php-ext-swoole-serialize.ini  \
             &&  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN groupadd --gid $GID $GROUP \
