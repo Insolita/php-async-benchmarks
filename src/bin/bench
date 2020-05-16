@@ -59,7 +59,7 @@ function usage(){
            bench -t=react -b5000 -c25 -i5
            bench -t=guzzle --batch=200 --conk=5 --iters=5 --db
     Options: 
-           -t           Required, one of clients - react, guzzle, amp
+           -t           Required, one of clients - react, guzzle, amp, rx
            -b --batch   (how many urls should be fetched, max = 6000)
            -c --conk    Request concurrency
            -i --iters   Number of iterations for run benchmark and than calculate average time
