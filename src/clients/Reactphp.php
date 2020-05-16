@@ -48,6 +48,10 @@ class Reactphp extends EventEmitter
         $this->tempDir = $tempDir;
         $connector = new Connector($loop, [
             'happy_eyeballs' => false,
+            'tls' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ],
         ]);
         $this->browser = new Browser($loop, $connector);
         $this->fs = Filesystem::create($loop);
@@ -61,7 +65,7 @@ class Reactphp extends EventEmitter
             $this->urls = array_slice(explode(PHP_EOL, $contents), 0, $this->batchSize);
         });
         $queue = new Queue($this->concurrency, null, function($url) {
-            return $this->browser->withOptions(['timeout' => 5])->get($url);
+            return $this->browser->withOptions(['timeout' => 5, 'obeySuccessCode' => false])->get($url);
         });
 
         $getUrls->then(function() use ($queue) {
