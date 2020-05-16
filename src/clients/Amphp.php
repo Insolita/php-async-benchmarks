@@ -14,21 +14,27 @@ use Amp\Producer;
 use Amp\Promise;
 use Amp\Sync\LocalSemaphore;
 use Symfony\Component\DomCrawler\Crawler;
+use Throwable;
 use function Amp\call;
 use function Amp\Promise\wait;
 use function Amp\Sync\ConcurrentIterator\each;
+use function trim;
+use const PHP_EOL;
 
 class Amphp
 {
     private int $concurrency;
+
     private int $batchSize;
 
     private string $urlPath;
+
     private string $tempDir;
 
     private HttpClient $client;
 
     private File\File $goodFile;
+
     private File\File $badFile;
 
     public function __construct(int $concurrency, int $batchSize, string $urlPath, string $tempDir)
@@ -45,14 +51,14 @@ class Amphp
             ->build();
     }
 
-    public function run(): void
+    public function run():void
     {
         wait($this->processRequests($this->readUrls()));
     }
 
-    private function readUrls(): Iterator
+    private function readUrls():Iterator
     {
-        return new Producer(function (callable $emit) {
+        return new Producer(function(callable $emit) {
             /** @var File\File $fileHandle */
             $fileHandle = yield File\open($this->urlPath, 'r');
             $lineReader = new LineReader($fileHandle);
@@ -62,7 +68,7 @@ class Amphp
                 while (($line = yield $lineReader->readLine()) && $num < $this->batchSize) {
                     $num++;
 
-                    yield $emit(\trim($line));
+                    yield $emit(trim($line));
                 }
             } finally {
                 yield $fileHandle->close();
@@ -70,9 +76,9 @@ class Amphp
         });
     }
 
-    private function processRequests(Iterator $urls): Promise
+    private function processRequests(Iterator $urls):Promise
     {
-        return call(function () use ($urls) {
+        return call(function() use ($urls) {
             $this->goodFile = yield File\open($this->tempDir . '/ok.txt', 'a');
             $this->badFile = yield File\open($this->tempDir . '/bad.txt', 'a');
 
@@ -80,13 +86,13 @@ class Amphp
                 yield each(
                     $urls,
                     new LocalSemaphore($this->concurrency),
-                    function (string $url) {
+                    function(string $url) {
                         try {
                             /** @var Response $response */
                             $response = yield $this->client->request(new Request($url));
                             yield $this->processHtml(yield $response->getBody()->buffer(), $url);
-                        } catch (\Throwable $e) {
-                            yield $this->badFile->write($url . \PHP_EOL);
+                        } catch (Throwable $e) {
+                            yield $this->badFile->write($url . PHP_EOL);
                         }
                     }
                 );
@@ -97,13 +103,13 @@ class Amphp
         });
     }
 
-    private function processHtml(string $html, string $url): Promise
+    private function processHtml(string $html, string $url):Promise
     {
-        return call(function () use ($html, $url) {
+        return call(function() use ($html, $url) {
             $crawler = new Crawler($html);
             $title = $crawler->filterXPath('//title')->text("No title");
 
-            yield $this->goodFile->write("$url,$title" . \PHP_EOL);
+            yield $this->goodFile->write("$url,$title" . PHP_EOL);
         });
     }
 }
