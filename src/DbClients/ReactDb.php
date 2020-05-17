@@ -1,10 +1,10 @@
 <?php
 
-namespace app\clients;
+namespace app\DbClients;
 
-use Evenement\EventEmitter;
 use Clue\React\Buzz\Browser;
 use Clue\React\Mq\Queue;
+use Evenement\EventEmitter;
 use PgAsync\Client;
 use Psr\Http\Message\ResponseInterface;
 use React\EventLoop\LoopInterface;

@@ -3,10 +3,10 @@
 namespace app;
 
 use Amp\Loop;
-use app\clients\Amphp;
-use app\clients\Guzzle;
-use app\clients\Reactphp;
-use app\clients\Swoole;
+use app\FetchClients\Amphp;
+use app\FetchClients\Guzzle;
+use app\FetchClients\Reactphp;
+use app\FetchClients\Swoole;
 use BadMethodCallException;
 use React\EventLoop\Factory;
 use function file_exists;

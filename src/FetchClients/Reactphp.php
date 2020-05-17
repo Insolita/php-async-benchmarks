@@ -1,6 +1,6 @@
 <?php
 
-namespace app\clients;
+namespace app\FetchClients;
 
 use Clue\React\Buzz\Browser;
 use Clue\React\Mq\Queue;

@@ -2,10 +2,8 @@
 
 namespace app;
 
-use app\clients\Guzzle;
-use app\clients\GuzzleDb;
-use app\clients\ReactDb;
-use app\clients\Reactphp;
+use app\DbClients\GuzzleDb;
+use app\DbClients\ReactDb;
 use BadMethodCallException;
 use PDO;
 use const PHP_EOL;

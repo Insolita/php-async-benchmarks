@@ -1,6 +1,6 @@
 <?php
 
-namespace app\clients;
+namespace app\FetchClients;
 
 use co;
 use Swoole\Coroutine;
