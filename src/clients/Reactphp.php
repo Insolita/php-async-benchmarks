@@ -68,6 +68,8 @@ class Reactphp extends EventEmitter
             return $this->browser->withOptions([
                 'timeout' => 5,
                 'obeySuccessCode' => false,
+                'followRedirects' => true,
+                'maxRedirects' => 5,
             ])->get($url);
         });
 

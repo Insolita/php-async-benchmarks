@@ -46,7 +46,7 @@ class Amphp
 
         $this->client = (new HttpClientBuilder())
             ->intercept(new SetRequestTimeout(5000, 10000, 30000))
-            ->followRedirects(10)
+            ->followRedirects(5)
             ->retry(0)
             ->build();
     }

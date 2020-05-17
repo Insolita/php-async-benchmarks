@@ -57,7 +57,7 @@ class Guzzle
 
     protected function createClient():Client
     {
-        return new Client(['connect_timeout' => 5, 'timeout' => 30]);
+        return new Client(['connect_timeout' => 5, 'timeout' => 30, 'allow_redirects' => ['max' => 5],]);
     }
 
     private function requestGenerator()
