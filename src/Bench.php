@@ -6,7 +6,6 @@ use Amp\Loop;
 use app\clients\Amphp;
 use app\clients\Guzzle;
 use app\clients\Reactphp;
-use app\clients\Rxphp;
 use app\clients\Swoole;
 use BadMethodCallException;
 use React\EventLoop\Factory;

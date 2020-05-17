@@ -10,6 +10,11 @@ use GuzzleHttp\Psr7\Response;
 use PDO;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\DomCrawler\Link;
+use function array_filter;
+use function count;
+use function strpos;
+use function trim;
+use function urldecode;
 
 class GuzzleDb
 {
@@ -40,8 +45,8 @@ class GuzzleDb
                 $crawler = new Crawler($body, $index);
                 $title = $crawler->filterXPath('//title')->text("No title");
                 $links = $crawler->filter('a')->links();
-                $links = array_map(fn(Link $link) => \urldecode($link->getUri()), $links);
-                $links = \array_filter($links, fn($link)=>\strpos($link, 'https')!== false);
+                $links = array_map(fn(Link $link) => urldecode($link->getUri()), $links);
+                $links = array_filter($links, fn($link) => strpos($link, 'https') !== false);
                 $status = $response->getStatusCode();
                 $this->dbWrite($index, $status, $title, $links);
             },
@@ -60,7 +65,7 @@ class GuzzleDb
             $num = 0;
             while (($line = fgets($f)) && $num < $this->batchSize) {
                 $num++;
-                $url = \trim($line);
+                $url = trim($line);
                 yield $url => new Request('GET', $url);
             }
         } finally {
@@ -71,10 +76,10 @@ class GuzzleDb
     private function dbWrite(string $url, int $status, string $title, array $links)
     {
         $this->db->prepare('INSERT INTO guzzle_urls (url, title, status) VALUES (?, ?, ?)')
-                       ->execute([$url, $title, $status]);
-        if(\count($links)){
+                 ->execute([$url, $title, $status]);
+        if (count($links)) {
             $id = $this->db->lastInsertId();
-            foreach ($links as $link){
+            foreach ($links as $link) {
                 $this->db->prepare('INSERT INTO guzzle_links (url_id, link) VALUES (?, ?)')
                          ->execute([$id, $link]);
             }
