@@ -7,12 +7,15 @@ use app\clients\Amphp;
 use app\clients\Guzzle;
 use app\clients\Reactphp;
 use app\clients\Rxphp;
+use app\clients\Swoole;
 use BadMethodCallException;
 use React\EventLoop\Factory;
 use function file_exists;
+use function file_put_contents;
 use function rmdir;
 use function str_repeat;
 use function unlink;
+use const FILE_APPEND;
 use const PHP_EOL;
 
 class Bench
@@ -29,10 +32,6 @@ class Bench
     private int $iterations;
 
     private string $tempDir;
-
-    private $startTime;
-
-    private $finishTime;
 
     private array $deltas = [];
 
@@ -75,15 +74,13 @@ class Bench
                 $loop->stop();
                 unset($client, $loop);
                 break;
-            case 'rx':
-                $client = new Rxphp($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir);
-                $client->run();
-                unset($client);
-                break;
             case 'guzzle':
                 $client = new Guzzle($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir);
                 $client->run();
                 unset($client);
+                break;
+            case 'swoole':
+                (new Swoole($this->concurrency, $this->batchSize, self::URL_PATH, $this->tempDir))->run();
                 break;
             default:
                 throw new BadMethodCallException('Not supported client');
@@ -110,8 +107,10 @@ class Bench
         $min = round(min($this->deltas), 4);
         $max = round(max($this->deltas), 4);
         $avg = round(array_sum($this->deltas) / $this->iterations, 4);
-        echo "Batch size: {$this->batchSize}, Iterations: {$this->iterations}" . PHP_EOL;
-        echo str_repeat('-', 25) . PHP_EOL;
-        echo "| {$this->clientName}| {$min} | {$max} | $avg |" . PHP_EOL;
+        $line = str_repeat('-', 25) . PHP_EOL;
+        $out1 = "Batch size: {$this->batchSize}, Iterations: {$this->iterations}" . PHP_EOL;
+        $out2 = "| {$this->clientName}| {$min} | {$max} | $avg |" . PHP_EOL;
+        echo $line . $out1 . $line . $out2;
+        file_put_contents(self::TEMP_DIR . "result{$this->batchSize}.txt", $out2, FILE_APPEND);
     }
 }

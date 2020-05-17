@@ -12,8 +12,8 @@ if(isset($options['help'])){
 }
 
 $client = $options['t'] ?? null;
-if(!$client || ! in_array($client, ['guzzle','react', 'amp', 'rx'])){
-    echo 'Please, define one of clients for benchmark (guzzle, react, amp, rx)'.PHP_EOL;
+if(!$client || ! in_array($client, ['guzzle','react', 'amp', 'swoole'])){
+    echo 'Please, define one of clients for benchmark (guzzle, react, amp, swoole)'.PHP_EOL;
     usage();
     exit();
 }
@@ -59,7 +59,7 @@ function usage(){
            bench -t=react -b5000 -c25 -i5
            bench -t=guzzle --batch=200 --conk=5 --iters=5 --db
     Options: 
-           -t           Required, one of clients - react, guzzle, amp, rx
+           -t           Required, one of clients - react, guzzle, amp, swoole
            -b --batch   (how many urls should be fetched, max = 6000)
            -c --conk    Request concurrency
            -i --iters   Number of iterations for run benchmark and than calculate average time

@@ -42,7 +42,7 @@ RUN  apt-get update && \
             && phpize && ./configure --enable-openssl  --enable-http2 && make && make install \
             && docker-php-ext-enable swoole \
             && curl -o /tmp/swoolepg.tar.gz https://github.com/swoole/ext-postgresql/archive/v4.5.1.tar.gz -L \
-            && tar zxvf /tmp/swoolepg.tar.gz && cd swoole-src* \
+            && tar zxvf /tmp/swoolepg.tar.gz && cd ext-* \
             && phpize && ./configure && make && make install\
             && docker-php-ext-enable swoole_postgresql  \
             && echo "swoole.fast_serialize=On" >> /usr/local/etc/php/conf.d/docker-php-ext-swoole-serialize.ini  \
@@ -69,5 +69,6 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 && rm -f /tmp/composer-setup.* \
 && chown -R $USERNAME:$USERNAME $HOME
 
+RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 
 USER $USERNAME

@@ -12,25 +12,25 @@ Concurrency = 25, iterations=10
 |Num queries |  Client      | Min Time   | Max Time   | Avg Time  |
 |------------|--------------|------------|------------|-----------|
 | 25 queries|               |             |           |           |
-|           | guzzle(multicurl)| 1.9765 | 2.1595 | 2.0568 |
-|           | amphp| 1.8417 | 2.0657 | 1.9523 |
-|           | reactphp|  4.2064 | 6.3588 | 4.6942 |
+|           | guzzle(multicurl)| 1.9195 | 2.3427 | 2.1016 |
+|           | amphp| 1.7752 | 2.1213 | 1.9646 |
+|           | reactphp (buzz-react)|  3.9908 | 4.1035 | 4.0339 |
 | 100 queries|               |             |           |           |
-|           |guzzle(multicurl)|  5.1422 | 6.4187 | 5.6293 |
-|           | amphp   |  4.6329 | 8.4759 | 5.6794 |
-|           | reactphp|   6.56 | 7.3179 | 6.8962 |
+|           |guzzle(multicurl)|5.0714 | 6.345 | 5.7387 |
+|           | amphp   |   4.8419 | 5.7793 | 5.111 |
+|           | reactphp (buzz-react)|   6.8191 | 6.8681 | 6.8394 |
 | 500 queries|               |             |           |           |
-|           |guzzle(multicurl)|21.6166 |37.4057|29.6603|
-|           | amphp   | 19.1308 | 27.2957 |23.5737|
-|           | reactphp|  18.0823 | 22.7643 | 20.1648 |
+|           |guzzle(multicurl)|22.7216 | 33.7153 | 27.6107 |
+|           | amphp   | 24.045 | 35.9257 | 27.4128 |
+|           | reactphp (buzz-react)|  21.6065 | 24.7808 | 23.6808 |
 | 2000 queries|               |             |           |           |
-|           |guzzle(multicurl)| 93.5699 | 121.8421 | 111.7504|
-|           | amphp| 65.8536 | 94.9016 | 84.1415 |
-|           | reactphp|73.346 | 113.252 | 96.7179|
+|           |guzzle(multicurl)| 100.2036 | 139.9788 | 120.0329 |
+|           | amphp| 109.8371 | 115.3629 | 112.8217 |
+|           | reactphp (buzz-react)|88.6737 | 92.6061 | 91.0348 |
 | 4000 queries|               |             |           |           |
-|           |guzzle(multicurl)| 218.3731 | 236.0503 | 228.1774|
-|           | amphp| 164.6433 | 183.1089 | 172.692 |
-|           | reactphp| 199.0026 | 206.5144 | 203.9312 |
+|           |guzzle(multicurl)|  223.741 | 239.7989 | 232.8649 |
+|           | amphp| 204.2293 | 227.4679 | 218.8668 |
+|           | reactphp (buzz-react)| 173.8275 | 187.5087 | 182.6765 |
 
 
 
@@ -40,17 +40,17 @@ Concurrency = 25, iterations=10
 |Num queries |  Client      | Min Time   | Max Time   | Avg Time  |
 |------------|--------------|------------|------------|-----------|
 | 25 queries|               |             |           |           |
-|           |guzzle(multicurl)|  1.4136 | 1.5777 | 1.5056 |
-|           | amphp   |  1.6166 | 2.2392 | 1.8866 |
-|           | reactphp|  6.9168 | 7.0695 | 7.0179 |
+|           |guzzle(multicurl)|  - | - | - |
+|           | amphp   |  - | - | - |
+|           | reactphp|  - | - | - |
 | 4000 queries|               |             |           |           |
-|           |guzzle(multicurl)|89.539    |  105.6129   | 92.9081   |
-|           | amphp|  65.9951 | 75.299 | 70.2124 |
-|           | reactphp| 81.8953 | 87.0721 | 83.5715 |
+|           |guzzle(multicurl)|-    |  -   | -   |
+|           | amphp|  - | - | - |
+|           | reactphp| - | - | - |
 | 6000 queries|               |             |           |           |
-|           |guzzle(multicurl)|157.3337 | 172.6499 | 163.9481 |
-|           | amphp|  93.9942 | 108.4978 | 100.1591 |
-|           | reactphp| 141.9791 | 150.1749 | 144.8111 |
+|           |guzzle(multicurl)|- | - | - |
+|           | amphp|  - | - | - |
+|           | reactphp| - | - | - |
 | 10000 queries (3 iterations)|               |             |           |           |
-|           | amphp|  155.3459 | 160.7316   | 158.2167   |
-|           | reactphp| 224.5488  | 237.4283  | 231.1185   |
+|           | amphp|  - | -   | -   |
+|           | reactphp| -  | -  | -   |

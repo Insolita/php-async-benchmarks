@@ -65,7 +65,10 @@ class Reactphp extends EventEmitter
             $this->urls = array_slice(explode(PHP_EOL, $contents), 0, $this->batchSize);
         });
         $queue = new Queue($this->concurrency, null, function($url) {
-            return $this->browser->withOptions(['timeout' => 5, 'obeySuccessCode' => false])->get($url);
+            return $this->browser->withOptions([
+                'timeout' => 5,
+                'obeySuccessCode' => false,
+            ])->get($url);
         });
 
         $getUrls->then(function() use ($queue) {
